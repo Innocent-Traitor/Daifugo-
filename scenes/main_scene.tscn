@@ -19,7 +19,6 @@ color = Color(0, 0.466667, 0.188235, 1)
 unique_name_in_owner = true
 
 [node name="DiscardPile" parent="GameHandler" instance=ExtResource("2_lti3k")]
-current_discard = []
 
 [node name="Player0" parent="GameHandler" instance=ExtResource("3_pstii")]
 anchor_bottom = 0.98
@@ -106,6 +105,79 @@ grow_vertical = 2
 theme_type_variation = &"HeaderLabel"
 text = "Pass"
 horizontal_alignment = 1
+
+[node name="ActionLabel" type="Label" parent="GameHandler/Labels"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.625
+anchor_right = 0.5
+anchor_bottom = 0.625
+offset_left = -274.0
+offset_top = -63.0
+offset_right = 274.0
+offset_bottom = 63.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"HeaderLabel"
+text = "Miyako Ochi"
+
+[node name="Player0Rank" type="Label" parent="GameHandler/Labels"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.9
+anchor_right = 0.5
+anchor_bottom = 0.9
+offset_left = -172.5
+offset_top = -126.0
+offset_right = 172.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_type_variation = &"HeaderLabel"
+text = "Daifugo"
+
+[node name="Player1Rank" type="Label" parent="GameHandler/Labels"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.48
+anchor_right = 1.0
+anchor_bottom = 0.48
+offset_left = -179.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.5708
+text = "Daifugo"
+
+[node name="Player2Rank" type="Label" parent="GameHandler/Labels"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.365
+anchor_bottom = 0.365
+offset_left = 179.0
+offset_top = 33.0
+grow_vertical = 2
+rotation = 1.5708
+text = "Daifugo"
+
+[node name="Player3Rank" type="Label" parent="GameHandler/Labels"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.035
+anchor_right = 0.5
+anchor_bottom = 0.035
+offset_left = -89.5
+offset_right = 89.5
+offset_bottom = 67.0
+grow_horizontal = 2
+text = "Daifugo"
 
 [node name="Player0" type="VBoxContainer" parent="GameHandler/Labels"]
 layout_mode = 1

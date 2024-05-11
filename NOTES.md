@@ -24,3 +24,9 @@ Miyako Ochi - If the Daifugo does not win the hand, they will automatically be d
 
 MVP:
 Be able to play the game from the beginning, and it actually works
+
+
+Things Left To Do:
+Joker does the thing it's supposed to
+AI does the thing it's supposed to
+Trading at the beginning of the round

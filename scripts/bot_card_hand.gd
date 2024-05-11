@@ -18,7 +18,7 @@ func sort_cards():
 
 
 func start_turn():
-	await get_tree().create_timer(0.25).timeout
+	await get_tree().create_timer(0.1).timeout
 	get_parent().recieve_pass()
 
 

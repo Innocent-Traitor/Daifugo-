@@ -1,5 +1,6 @@
 extends Node
 
+
 ## Whose turn is it right now?
 var turn_order : int
 ## How many passed turns have we had?
@@ -10,6 +11,9 @@ var current_discard : Array = [""]
 ## Value of the most recently discarded card
 var discard_value : int = 1
 
+## List of players that have finished by id
+var finished_players : Array = []
+
 
 func _ready():
 	new_round()
@@ -19,14 +23,11 @@ func new_round():
 
 func new_hand():
 	pass_count = 0
-	turn_order = (turn_order + 1) % 4
-
 	current_discard = [""]
 	discard_value = 1
 	$DiscardPile.reset_discard()
-	get_node("Player" + str(turn_order)).start_turn()
+	rotate_turn()
 	
-
 ## Deal cards to all players
 func deal_cards():
 	var dealer = Dealer.new()
@@ -47,8 +48,8 @@ func deal_cards():
 	turn_order = 0
 	get_node("Labels/Player" + str(turn_order) + "/Player" + str(turn_order) + "Name").theme_type_variation = "SelectedPlayerLabel"
 
-## When a player has discarded a hand
-func recieve_discard(cards : Array) -> bool:
+## Checks to see if a discard is valid
+func is_valid_discard(cards: Array) -> bool:
 	var card = get_card_info(cards[0])
 	if (not len(cards) == len(current_discard)) and (not current_discard == [""]):
 		return false
@@ -56,18 +57,22 @@ func recieve_discard(cards : Array) -> bool:
 	if not is_card_valid(card):
 		print('Invalid Discard from player ' + str(turn_order) + ': ' + str(cards))
 		return false
+	
+	return true
 
+## When a player has discarded a hand
+func recieve_discard(cards : Array):
+	var card = get_card_info(cards[0])
 	discard_value = card.value
 	current_discard = cards
 	$DiscardPile.update_discard(current_discard)
 	rotate_turn()
 	pass_count = 0
-	return true
 
 ## When a player passes their turn
 func recieve_pass():
 	$Labels/PassLabel.visible = true
-	await get_tree().create_timer(0.25).timeout
+	await get_tree().create_timer(0.1).timeout
 	$Labels/PassLabel.visible = false
 
 	pass_count += 1
@@ -82,14 +87,39 @@ func recieve_pass():
 func rotate_turn():
 	get_node("Labels/Player" + str(turn_order) + "/Player" + str(turn_order) + "Name").theme_type_variation = ""
 	turn_order = (turn_order + 1) % 4
-	get_node("Player" + str(turn_order)).start_turn()
+	if turn_order in finished_players:
+		print('finished turn')
+		rotate_turn()
+		return
 		
+	get_node("Player" + str(turn_order)).start_turn()
 	get_node("Labels/Player" + str(turn_order) + "/Player" + str(turn_order) + "Name").theme_type_variation = "SelectedPlayerLabel"
 
 ## Check to see if the card is able to be discarded
 func is_card_valid(card_id) -> bool:
 	var card = get_card_info(card_id)
 	return card.value > discard_value
+
+## Called from a player when they finish their hand
+func player_finish_hand(player : int):
+	print("Player " + str(player) + " finished their hand")
+	var node = get_node("Labels/Player" + str(player) + "Rank")
+	match len(finished_players):
+		0:
+			node.text = 'Daifugo'
+		1:
+			node.text = 'Fugo'
+		2:
+			node.text = 'Hinmin'
+
+	node.visible = true	
+	finished_players.append(player)
+
+	if len(finished_players) == 3:
+		for i in 4:
+			if i not in finished_players:
+				get_node("Labels/Player" + str(i) + "Rank").text = 'Daihinmin'
+				get_node("Labels/Player" + str(i) + "Rank").visible = true
 
 ## Returns a dictionary with the card value and suit
 func get_card_info(card_id) -> Dictionary:

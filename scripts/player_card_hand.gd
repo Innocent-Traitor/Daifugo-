@@ -69,13 +69,15 @@ func find_valid_cards() -> bool:
 func _on_discard_button_pressed():
 	if selected_cards.is_empty():
 		return
-		
-	if not get_parent().recieve_discard(selected_cards):
+
+	if not get_parent().is_valid_discard(selected_cards):
 		return
 
 	for card in selected_cards:
-		get_node(card).queue_free()
-		
+		var card_node = get_node(card)
+		remove_child(card_node)
+		card_node.queue_free()
+	
 	end_turn()
 
 
@@ -94,8 +96,15 @@ func start_turn():
 
 
 func end_turn():
+	if not selected_cards.is_empty():
+		get_parent().recieve_discard(selected_cards)
+
 	selected_cards = []
 	selected_card_value = 0
+
+	if get_child_count() == 0:
+		var self_name = self.name.substr(6, 1)
+		get_parent().player_finish_hand(int(self_name))
 
 	for node in get_children():
 		node.is_valid = false
@@ -103,5 +112,3 @@ func end_turn():
 
 	get_node("%DiscardButton").disabled = true
 	get_node("%PassButton").disabled = true
-
-
