@@ -3,7 +3,7 @@ extends Node
 ## Whose turn is it right now?
 var turn_order : int
 ## How many passed turns have we had?
-var pass_count : int 
+var pass_count : int = 0
 
 ## Array of the most recently discarded cards
 var current_discard : Array = [""]
@@ -14,9 +14,14 @@ var discard_value : int = 1
 func _ready():
 	new_round()
 
-
 func new_round():
 	deal_cards()
+
+func new_hand():
+	current_discard = [""]
+	discard_value = 1
+	get_node("Player" + str(turn_order)).start_turn()
+	
 
 ## Deal cards to all players
 func deal_cards():
@@ -25,15 +30,15 @@ func deal_cards():
 	dealer.prepare_to_deal(1)
 	for i in (dealer.requested_decks * 52 / 4):
 		# TODO: Adjust it so for the bots it is in a for loop to better support different amount of bot players
-		$PlayerCardHand.add_card(dealer.undealt_cards.pop_back())
-		$BotPlayer1.add_card(dealer.undealt_cards.pop_back())
-		$BotPlayer2.add_card(dealer.undealt_cards.pop_back())
-		$BotPlayer3.add_card(dealer.undealt_cards.pop_back())
-	$PlayerCardHand.sort_cards()
-	$PlayerCardHand.find_valid_cards()
-	$BotPlayer1.init_hand()
-	$BotPlayer2.init_hand()
-	$BotPlayer3.init_hand()
+		$Player0.add_card(dealer.undealt_cards.pop_back())
+		$Player1.add_card(dealer.undealt_cards.pop_back())
+		$Player2.add_card(dealer.undealt_cards.pop_back())
+		$Player3.add_card(dealer.undealt_cards.pop_back())
+	$Player0.sort_cards()
+	$Player0.find_valid_cards()
+	$Player1.init_hand()
+	$Player2.init_hand()
+	$Player3.init_hand()
 
 	turn_order = 0
 	get_node("Labels/Player" + str(turn_order) + "/Player" + str(turn_order) + "Name").theme_type_variation = "SelectedPlayerLabel"
@@ -41,7 +46,6 @@ func deal_cards():
 ## When a player has discarded a hand
 func recieve_discard(cards : Array) -> bool:
 	var card = get_card_info(cards[0])
-	print(len(cards), len(current_discard))
 	if (not len(cards) == len(current_discard)) and (not current_discard == [""]):
 		return false
 	
@@ -53,6 +57,7 @@ func recieve_discard(cards : Array) -> bool:
 	current_discard = cards
 	$DiscardPile.update_discard(current_discard)
 	rotate_turn()
+	pass_count = 0
 	return true
 
 ## When a player passes their turn
@@ -60,16 +65,23 @@ func recieve_pass():
 	$Labels/PassLabel.visible = true
 	await get_tree().create_timer(0.25).timeout
 	$Labels/PassLabel.visible = false
+
+	pass_count += 1
+	# If 3 passes in a row, start a new hand TODO: Set this up for different amount of players
+	if pass_count == 3:
+		pass_count = 0
+		turn_order = (turn_order + 1) % 4
+		print('new round', turn_order)
+		new_hand()
+		return
+
 	rotate_turn()
 
 ## Start the next player's turn
 func rotate_turn():
 	get_node("Labels/Player" + str(turn_order) + "/Player" + str(turn_order) + "Name").theme_type_variation = ""
 	turn_order = (turn_order + 1) % 4
-	if turn_order == 0:
-		$PlayerCardHand.start_turn()
-	else:
-		get_node("BotPlayer" + str(turn_order)).start_turn()
+	get_node("Player" + str(turn_order)).start_turn()
 		
 	get_node("Labels/Player" + str(turn_order) + "/Player" + str(turn_order) + "Name").theme_type_variation = "SelectedPlayerLabel"
 

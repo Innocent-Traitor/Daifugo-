@@ -20,6 +20,8 @@ This project was started due to the lack of english translated version of daifug
 - [ ] - Stats
 - [ ] - Customizable Cards
 - [ ] - Change term language (Daifugo = President)
+- [ ] - Auto Pass
+- [ ] - Different amount of players
 
 ### Other nice things that probably won't come for a while
 - [ ] - Multiplayer
