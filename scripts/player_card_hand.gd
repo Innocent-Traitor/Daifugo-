@@ -69,7 +69,9 @@ func find_valid_cards() -> bool:
 func _on_discard_button_pressed():
 	if selected_cards.is_empty():
 		return
-	get_parent().recieve_discard(selected_cards)
+		
+	if not get_parent().recieve_discard(selected_cards):
+		return
 
 	for card in selected_cards:
 		get_node(card).queue_free()

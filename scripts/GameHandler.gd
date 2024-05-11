@@ -1,7 +1,9 @@
 extends Node
 
-# Whose turn is it right now?
+## Whose turn is it right now?
 var turn_order : int
+## How many passed turns have we had?
+var pass_count : int 
 
 ## Array of the most recently discarded cards
 var current_discard : Array = [""]
@@ -36,20 +38,24 @@ func deal_cards():
 	turn_order = 0
 	get_node("Labels/Player" + str(turn_order) + "/Player" + str(turn_order) + "Name").theme_type_variation = "SelectedPlayerLabel"
 
-
 ## When a player has discarded a hand
-func recieve_discard(cards : Array):
+func recieve_discard(cards : Array) -> bool:
 	var card = get_card_info(cards[0])
+	print(len(cards), len(current_discard))
+	if (not len(cards) == len(current_discard)) and (not current_discard == [""]):
+		return false
+	
 	if not is_card_valid(card):
 		print('Invalid Discard from player ' + str(turn_order) + ': ' + str(cards))
-		return
+		return false
 
 	discard_value = card.value
 	current_discard = cards
 	$DiscardPile.update_discard(current_discard)
 	rotate_turn()
+	return true
 
-
+## When a player passes their turn
 func recieve_pass():
 	$Labels/PassLabel.visible = true
 	await get_tree().create_timer(0.25).timeout
@@ -67,13 +73,12 @@ func rotate_turn():
 		
 	get_node("Labels/Player" + str(turn_order) + "/Player" + str(turn_order) + "Name").theme_type_variation = "SelectedPlayerLabel"
 
-
 ## Check to see if the card is able to be discarded
 func is_card_valid(card_id) -> bool:
 	var card = get_card_info(card_id)
 	return card.value > discard_value
 
-# Returns a dictionary with the card value and suit
+## Returns a dictionary with the card value and suit
 func get_card_info(card_id) -> Dictionary:
 	var card_info = {}
 	if not card_id is Dictionary:
