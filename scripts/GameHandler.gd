@@ -18,8 +18,12 @@ func new_round():
 	deal_cards()
 
 func new_hand():
+	pass_count = 0
+	turn_order = (turn_order + 1) % 4
+
 	current_discard = [""]
 	discard_value = 1
+	$DiscardPile.reset_discard()
 	get_node("Player" + str(turn_order)).start_turn()
 	
 
@@ -69,9 +73,6 @@ func recieve_pass():
 	pass_count += 1
 	# If 3 passes in a row, start a new hand TODO: Set this up for different amount of players
 	if pass_count == 3:
-		pass_count = 0
-		turn_order = (turn_order + 1) % 4
-		print('new round', turn_order)
 		new_hand()
 		return
 

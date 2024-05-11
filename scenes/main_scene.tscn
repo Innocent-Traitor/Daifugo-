@@ -19,6 +19,7 @@ color = Color(0, 0.466667, 0.188235, 1)
 unique_name_in_owner = true
 
 [node name="DiscardPile" parent="GameHandler" instance=ExtResource("2_lti3k")]
+current_discard = []
 
 [node name="Player0" parent="GameHandler" instance=ExtResource("3_pstii")]
 anchor_bottom = 0.98

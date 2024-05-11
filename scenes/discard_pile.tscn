@@ -13,7 +13,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = -200
 script = ExtResource("1_1asox")
-current_discard = null
 
 [node name="Card" parent="." instance=ExtResource("2_41d7d")]
 layout_mode = 2

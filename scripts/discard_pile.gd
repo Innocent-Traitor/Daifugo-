@@ -22,3 +22,9 @@ func update_discard(new_discard : Array):
 		var new_card = preload("res://scenes/card.tscn").instantiate()
 		new_card.card_id = card
 		add_child(new_card)
+
+
+func reset_discard():
+	current_discard = [""]
+	for node in get_children():
+		node.queue_free()
