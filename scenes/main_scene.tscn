@@ -1,0 +1,194 @@
+[gd_scene load_steps=5 format=3 uid="uid://cj8g6ab8mfwni"]
+
+[ext_resource type="PackedScene" uid="uid://kbbpv2pth1s2" path="res://scenes/game_handler.tscn" id="1_0c8r3"]
+[ext_resource type="PackedScene" uid="uid://ckqnp7njam2lm" path="res://scenes/discard_pile.tscn" id="2_lti3k"]
+[ext_resource type="PackedScene" uid="uid://dkajx7tmty2jj" path="res://scenes/card_hand.tscn" id="3_pstii"]
+[ext_resource type="PackedScene" uid="uid://vv61fl6h6a1m" path="res://scenes/bot_card_hand.tscn" id="4_tcix5"]
+
+[node name="MainScene" type="Node"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.466667, 0.188235, 1)
+
+[node name="GameHandler" parent="." instance=ExtResource("1_0c8r3")]
+unique_name_in_owner = true
+
+[node name="DiscardPile" parent="GameHandler" instance=ExtResource("2_lti3k")]
+
+[node name="PlayerCardHand" parent="GameHandler" instance=ExtResource("3_pstii")]
+anchor_bottom = 0.98
+
+[node name="BotPlayer1" parent="GameHandler" instance=ExtResource("4_tcix5")]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_right = 700.0
+grow_horizontal = 0
+grow_vertical = 2
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="BotPlayer2" parent="GameHandler" instance=ExtResource("4_tcix5")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 180.0
+offset_top = 20.0
+offset_right = 900.0
+offset_bottom = 20.0
+grow_horizontal = 2
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+
+[node name="BotPlayer3" parent="GameHandler" instance=ExtResource("4_tcix5")]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 20.0
+offset_top = -360.0
+offset_right = 740.0
+offset_bottom = -360.0
+grow_vertical = 2
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Buttons" type="HBoxContainer" parent="GameHandler"]
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.775
+anchor_right = 0.8
+anchor_bottom = 0.775
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="PassButton" type="Button" parent="GameHandler/Buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Pass"
+
+[node name="DiscardButton" type="Button" parent="GameHandler/Buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+text = "Discard"
+
+[node name="Labels" type="Control" parent="GameHandler"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PassLabel" type="Label" parent="GameHandler/Labels"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.325
+anchor_right = 0.5
+anchor_bottom = 0.325
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"HeaderLabel"
+text = "Pass"
+horizontal_alignment = 1
+
+[node name="Player0" type="VBoxContainer" parent="GameHandler/Labels"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.75
+anchor_right = 0.5
+anchor_bottom = 0.75
+offset_left = -90.5
+offset_top = -138.0
+offset_right = 90.5
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Player0Name" type="Label" parent="GameHandler/Labels/Player0"]
+layout_mode = 2
+text = "Player"
+horizontal_alignment = 1
+
+[node name="Player0Label" type="Label" parent="GameHandler/Labels/Player0"]
+layout_mode = 2
+text = "Heimen
+"
+horizontal_alignment = 1
+
+[node name="Player1" type="VBoxContainer" parent="GameHandler/Labels"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.8
+anchor_top = 0.3
+anchor_right = 0.8
+anchor_bottom = 0.3
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Player1Name" type="Label" parent="GameHandler/Labels/Player1"]
+layout_mode = 2
+text = "Monika"
+horizontal_alignment = 1
+
+[node name="Player1Label" type="Label" parent="GameHandler/Labels/Player1"]
+layout_mode = 2
+text = "Heimen"
+horizontal_alignment = 1
+
+[node name="Player2" type="VBoxContainer" parent="GameHandler/Labels"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.18
+anchor_right = 0.5
+anchor_bottom = 0.18
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Player2Name" type="Label" parent="GameHandler/Labels/Player2"]
+layout_mode = 2
+text = "Gary"
+horizontal_alignment = 1
+
+[node name="Player2Label" type="Label" parent="GameHandler/Labels/Player2"]
+layout_mode = 2
+text = "Heimen"
+horizontal_alignment = 1
+
+[node name="Player3" type="VBoxContainer" parent="GameHandler/Labels"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.3
+anchor_right = 0.2
+anchor_bottom = 0.3
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Player3Name" type="Label" parent="GameHandler/Labels/Player3"]
+layout_mode = 2
+text = "Will"
+horizontal_alignment = 1
+
+[node name="Player3Label" type="Label" parent="GameHandler/Labels/Player3"]
+layout_mode = 2
+text = "Heimen"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="GameHandler/Buttons/PassButton" to="GameHandler/PlayerCardHand" method="_on_pass_button_pressed"]
+[connection signal="pressed" from="GameHandler/Buttons/DiscardButton" to="GameHandler/PlayerCardHand" method="_on_discard_button_pressed"]

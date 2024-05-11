@@ -1,0 +1,618 @@
+[gd_scene load_steps=7 format=3 uid="uid://lu6lki5p8i8t"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_lxy5w"]
+[ext_resource type="Texture2D" uid="uid://c7633ec5gtmai" path="res://sprites/leaderboardsComplex.png" id="2_83qko"]
+[ext_resource type="Theme" uid="uid://3yabb5f6pk4x" path="res://resources/main_theme.tres" id="3_3urjr"]
+[ext_resource type="Texture2D" uid="uid://x4t3gir5a7ya" path="res://sprites/Menu/MoonsoftLogo.png" id="4_1mfp8"]
+[ext_resource type="Texture2D" uid="uid://bpmjbsjd3u33x" path="res://sprites/Menu/discord.svg" id="5_fckao"]
+[ext_resource type="Texture2D" uid="uid://c8j4id8733djg" path="res://sprites/Menu/github-mark-white.svg" id="6_ut8v0"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lxy5w")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.466667, 0.188235, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.2
+anchor_right = 0.5
+anchor_bottom = 0.2
+offset_left = -253.0
+offset_top = -250.0
+offset_right = 247.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_83qko")
+
+[node name="MainContainer" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -375.0
+offset_top = -375.0
+offset_right = 375.0
+offset_bottom = 625.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Spacer6" type="Control" parent="MainContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PlayButton" type="Button" parent="MainContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Play Game"
+
+[node name="Spacer" type="Control" parent="MainContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="StatsButton" type="Button" parent="MainContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Stats"
+
+[node name="Spacer2" type="Control" parent="MainContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SettingsButton" type="Button" parent="MainContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Settings"
+
+[node name="Spacer3" type="Control" parent="MainContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HowToButton" type="Button" parent="MainContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "How to Play"
+
+[node name="Spacer4" type="Control" parent="MainContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="AboutButton" type="Button" parent="MainContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "About"
+
+[node name="Spacer5" type="Control" parent="MainContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="StatsContainer" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.9
+grow_horizontal = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="StatsContainer"]
+layout_mode = 2
+
+[node name="Header" type="Label" parent="StatsContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_3urjr")
+theme_type_variation = &"HeaderLabel"
+text = "Player Stats"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="StatsContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PointsContainer" type="HBoxContainer" parent="StatsContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PointsText" type="Label" parent="StatsContainer/VBoxContainer/PointsContainer"]
+layout_mode = 2
+text = "Total Points:"
+
+[node name="PointsLabel" type="Label" parent="StatsContainer/VBoxContainer/PointsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "150"
+horizontal_alignment = 2
+
+[node name="RoundsContainer" type="HBoxContainer" parent="StatsContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="RoundsText" type="Label" parent="StatsContainer/VBoxContainer/RoundsContainer"]
+layout_mode = 2
+text = "Rounds Played:"
+
+[node name="RoundsLabel" type="Label" parent="StatsContainer/VBoxContainer/RoundsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "10"
+horizontal_alignment = 2
+
+[node name="DaifugoWRContainer" type="HBoxContainer" parent="StatsContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="DaifugoWRText" type="Label" parent="StatsContainer/VBoxContainer/DaifugoWRContainer"]
+layout_mode = 2
+text = "Win Rate (Daifugo):"
+
+[node name="DaifugoWRLabel" type="Label" parent="StatsContainer/VBoxContainer/DaifugoWRContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "75%"
+horizontal_alignment = 2
+
+[node name="FugoWRContainer" type="HBoxContainer" parent="StatsContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="FugoWRText" type="Label" parent="StatsContainer/VBoxContainer/FugoWRContainer"]
+layout_mode = 2
+text = "Win Rate (Daifugo, Fugo):"
+
+[node name="FugoWRLabel" type="Label" parent="StatsContainer/VBoxContainer/FugoWRContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "75%"
+horizontal_alignment = 2
+
+[node name="WinStreakATContainer" type="HBoxContainer" parent="StatsContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="WinStreakATText" type="Label" parent="StatsContainer/VBoxContainer/WinStreakATContainer"]
+layout_mode = 2
+text = "Best Daifugo Win Streak:"
+
+[node name="WinStreakATLabel" type="Label" parent="StatsContainer/VBoxContainer/WinStreakATContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "8"
+horizontal_alignment = 2
+
+[node name="WinStreakCurContainer" type="HBoxContainer" parent="StatsContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="WinStreakCurText" type="Label" parent="StatsContainer/VBoxContainer/WinStreakCurContainer"]
+layout_mode = 2
+text = "Current Diafugo Win Streak:"
+
+[node name="WinStreakCurLabel" type="Label" parent="StatsContainer/VBoxContainer/WinStreakCurContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "8
+"
+horizontal_alignment = 2
+
+[node name="RoundsHeader" type="Label" parent="StatsContainer/VBoxContainer"]
+layout_mode = 2
+text = "Rounds Spent as..."
+horizontal_alignment = 1
+
+[node name="DaifugoRoundContainer" type="HBoxContainer" parent="StatsContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="DaifugoRoundText" type="Label" parent="StatsContainer/VBoxContainer/DaifugoRoundContainer"]
+layout_mode = 2
+text = "Diafugo: "
+
+[node name="DiafugoRoundLabel" type="Label" parent="StatsContainer/VBoxContainer/DaifugoRoundContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "4
+"
+horizontal_alignment = 2
+
+[node name="FugoRoundContainer2" type="HBoxContainer" parent="StatsContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="FugoRoundText" type="Label" parent="StatsContainer/VBoxContainer/FugoRoundContainer2"]
+layout_mode = 2
+text = "Fugo: "
+
+[node name="FugoRoundLabel" type="Label" parent="StatsContainer/VBoxContainer/FugoRoundContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "4
+"
+horizontal_alignment = 2
+
+[node name="HeimenRoundContainer3" type="HBoxContainer" parent="StatsContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HeimenRoundText" type="Label" parent="StatsContainer/VBoxContainer/HeimenRoundContainer3"]
+layout_mode = 2
+text = "Heimen:"
+
+[node name="HeimenRoundLabel" type="Label" parent="StatsContainer/VBoxContainer/HeimenRoundContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "4
+"
+horizontal_alignment = 2
+
+[node name="HinminRoundContainer4" type="HBoxContainer" parent="StatsContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HinminRoundText" type="Label" parent="StatsContainer/VBoxContainer/HinminRoundContainer4"]
+layout_mode = 2
+text = "Hinmin:
+"
+
+[node name="HimminRoundLabel" type="Label" parent="StatsContainer/VBoxContainer/HinminRoundContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "4
+"
+horizontal_alignment = 2
+
+[node name="DaihinminRoundContainer5" type="HBoxContainer" parent="StatsContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="DaihinminRoundText" type="Label" parent="StatsContainer/VBoxContainer/DaihinminRoundContainer5"]
+layout_mode = 2
+text = "Daihinmin:
+"
+
+[node name="DaihimminRoundLabel" type="Label" parent="StatsContainer/VBoxContainer/DaihinminRoundContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "4
+"
+horizontal_alignment = 2
+
+[node name="Spacer" type="Control" parent="StatsContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="StatsReturnButton" type="Button" parent="StatsContainer/VBoxContainer"]
+layout_mode = 2
+text = "Return to Menu"
+
+[node name="Spacer3" type="Control" parent="StatsContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="ShareButton" type="Button" parent="StatsContainer/VBoxContainer"]
+layout_mode = 2
+text = "Share Score"
+
+[node name="Spacer2" type="Control" parent="StatsContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="ResetButton" type="Button" parent="StatsContainer/VBoxContainer"]
+layout_mode = 2
+text = "Reset Score"
+
+[node name="SettingsContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.9
+grow_horizontal = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="SettingsContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="HeaderLabel" type="Label" parent="SettingsContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_type_variation = &"HeaderLabel"
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="SettingsContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="GeneralLabel" type="Label" parent="SettingsContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "    General Settings "
+
+[node name="LanguageContainer" type="HBoxContainer" parent="SettingsContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="LanguageLabel" type="Label" parent="SettingsContainer/VBoxContainer/ScrollContainer/VBoxContainer/LanguageContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Game Language"
+
+[node name="LanguageOption" type="OptionButton" parent="SettingsContainer/VBoxContainer/ScrollContainer/VBoxContainer/LanguageContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+item_count = 1
+selected = 0
+popup/item_0/text = "English"
+popup/item_0/id = 0
+
+[node name="TermsContainer" type="HBoxContainer" parent="SettingsContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TermsLabel" type="Label" parent="SettingsContainer/VBoxContainer/ScrollContainer/VBoxContainer/TermsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Terms Language"
+
+[node name="TermsOption" type="OptionButton" parent="SettingsContainer/VBoxContainer/ScrollContainer/VBoxContainer/TermsContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+item_count = 2
+selected = 0
+popup/item_0/text = "Japanese"
+popup/item_0/id = 0
+popup/item_1/text = "English"
+popup/item_1/id = 1
+
+[node name="AutoPassContainer" type="HBoxContainer" parent="SettingsContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="AutoPassLabel" type="Label" parent="SettingsContainer/VBoxContainer/ScrollContainer/VBoxContainer/AutoPassContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Auto Skip"
+
+[node name="AutoPassOption" type="CheckBox" parent="SettingsContainer/VBoxContainer/ScrollContainer/VBoxContainer/AutoPassContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="SpeedContainer" type="HBoxContainer" parent="SettingsContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SpeedLabel" type="Label" parent="SettingsContainer/VBoxContainer/ScrollContainer/VBoxContainer/SpeedContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Game Speed"
+
+[node name="SpeedOption" type="OptionButton" parent="SettingsContainer/VBoxContainer/ScrollContainer/VBoxContainer/SpeedContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+item_count = 4
+selected = 2
+popup/item_0/text = "Instant"
+popup/item_0/id = 0
+popup/item_1/text = "Fast"
+popup/item_1/id = 1
+popup/item_2/text = "Normal"
+popup/item_2/id = 2
+popup/item_3/text = "Slow"
+popup/item_3/id = 3
+
+[node name="HSeparator2" type="HSeparator" parent="SettingsContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="GameLabel" type="Label" parent="SettingsContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "    General Settings "
+
+[node name="SettingsReturn" type="Button" parent="SettingsContainer/VBoxContainer"]
+layout_mode = 2
+text = "Return"
+
+[node name="AboutContainer" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.9
+grow_horizontal = 2
+
+[node name="MainContainer" type="VBoxContainer" parent="AboutContainer"]
+layout_mode = 2
+
+[node name="LogoContainer" type="CenterContainer" parent="AboutContainer/MainContainer"]
+custom_minimum_size = Vector2(0, 650)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AboutContainer/MainContainer/LogoContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="AboutContainer/MainContainer/LogoContainer/VBoxContainer"]
+layout_mode = 2
+text = "Developed by"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="AboutContainer/MainContainer/LogoContainer/VBoxContainer"]
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 2
+texture = ExtResource("4_1mfp8")
+expand_mode = 5
+
+[node name="DevLabel" type="Label" parent="AboutContainer/MainContainer"]
+layout_mode = 2
+text = "Developer - James Moffett"
+horizontal_alignment = 1
+
+[node name="ContributeLabel" type="Label" parent="AboutContainer/MainContainer"]
+visible = false
+layout_mode = 2
+text = "Contributors - People to be put here"
+horizontal_alignment = 1
+
+[node name="QATestingLabel" type="Label" parent="AboutContainer/MainContainer"]
+visible = false
+layout_mode = 2
+text = "QA/Testing - People to be put here"
+horizontal_alignment = 1
+
+[node name="CatLabel" type="Label" parent="AboutContainer/MainContainer"]
+layout_mode = 2
+text = "Moral Support - Winston (Cat)"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="AboutContainer/MainContainer"]
+layout_mode = 2
+
+[node name="DiscordContainer" type="HBoxContainer" parent="AboutContainer/MainContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="AboutContainer/MainContainer/DiscordContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 36
+text = "Suggest Additions and Report bugs via our discord!"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="DiscordButton" type="TextureButton" parent="AboutContainer/MainContainer/DiscordContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture_normal = ExtResource("5_fckao")
+stretch_mode = 3
+
+[node name="Spacer" type="Control" parent="AboutContainer/MainContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+
+[node name="GithubContainer" type="HBoxContainer" parent="AboutContainer/MainContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="AboutContainer/MainContainer/GithubContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 36
+text = "This game is open source on GitHub!"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="GithubButton" type="TextureButton" parent="AboutContainer/MainContainer/GithubContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture_normal = ExtResource("6_ut8v0")
+stretch_mode = 3
+
+[node name="Control" type="Control" parent="AboutContainer/MainContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LicenseButton" type="Button" parent="AboutContainer/MainContainer"]
+layout_mode = 2
+text = "Open Source Licenses"
+
+[node name="Spacer2" type="Control" parent="AboutContainer/MainContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+
+[node name="PrivacyButton" type="Button" parent="AboutContainer/MainContainer"]
+layout_mode = 2
+text = "Privacy Policy"
+
+[node name="Control2" type="Control" parent="AboutContainer/MainContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="AboutReturnButton" type="Button" parent="AboutContainer/MainContainer"]
+layout_mode = 2
+text = "Return to Menu"
+
+[node name="Control3" type="Control" parent="AboutContainer/MainContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LicenseContainer" type="VBoxContainer" parent="AboutContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="AboutContainer/LicenseContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "This game uses Godot Engine, available under the following license:
+
+Copyright (c) 2014-present Godot Engine contributors. Copyright (c) 2007-2014 Juan Linietsky, Ariel Manzur.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+Portions of this software are copyright © 1996-2023 The FreeType Project (www.freetype.org). All rights reserved.
+
+Copyright (c) 2002-2020 Lee Salzman
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+Copyright The Mbed TLS Contributors
+
+Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+"
+autowrap_mode = 2
+
+[node name="Spacer" type="Control" parent="AboutContainer/LicenseContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LicenseReturnButton" type="Button" parent="AboutContainer/LicenseContainer"]
+layout_mode = 2
+text = "Return to Menu"
+
+[node name="Spacer2" type="Control" parent="AboutContainer/LicenseContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="AdPlaceholder" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -150.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(1, 0.443137, 0.376471, 1)
+
+[connection signal="pressed" from="MainContainer/StatsButton" to="." method="_on_stats_button_pressed"]
+[connection signal="pressed" from="MainContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="MainContainer/AboutButton" to="." method="_on_about_button_pressed"]
+[connection signal="pressed" from="StatsContainer/VBoxContainer/StatsReturnButton" to="." method="_on_stats_return_button_pressed"]
+[connection signal="pressed" from="AboutContainer/MainContainer/DiscordContainer/DiscordButton" to="." method="_on_discord_button_pressed"]
+[connection signal="pressed" from="AboutContainer/MainContainer/GithubContainer/GithubButton" to="." method="_on_github_button_pressed"]
+[connection signal="pressed" from="AboutContainer/MainContainer/LicenseButton" to="." method="_on_license_button_pressed"]
+[connection signal="pressed" from="AboutContainer/MainContainer/AboutReturnButton" to="." method="_on_about_return_button_pressed"]
+[connection signal="pressed" from="AboutContainer/LicenseContainer/LicenseReturnButton" to="." method="_on_license_return_button_pressed"]
