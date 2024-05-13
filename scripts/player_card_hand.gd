@@ -18,8 +18,9 @@ func sort_cards():
 	var sorted_cards = get_children()
 	sorted_cards.sort_custom(func(a, b): return a.card_value < b.card_value)
 
-	# Add jokers to the end
-	for card in sorted_cards:
+	# Add jokers to the end | I hope it works properly
+	for i in len(sorted_cards):
+		var card = sorted_cards[i]
 		if card.card_value == -1:
 			sorted_cards.erase(card)
 			sorted_cards.append(card)

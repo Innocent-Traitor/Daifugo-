@@ -39,7 +39,8 @@ func deal_cards():
 		$Player1.add_card(dealer.undealt_cards.pop_back())
 		$Player2.add_card(dealer.undealt_cards.pop_back())
 		$Player3.add_card(dealer.undealt_cards.pop_back())
-	$Player0.sort_cards()
+	for i in 4:
+		get_node("Player" + str(i)).sort_cards()
 	$Player0.find_valid_cards()
 	$Player1.init_hand()
 	$Player2.init_hand()
