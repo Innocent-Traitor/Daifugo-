@@ -1,7 +1,7 @@
 [gd_resource type="Theme" load_steps=4 format=3 uid="uid://3yabb5f6pk4x"]
 
-[ext_resource type="Texture2D" uid="uid://ct0ocwcny86ka" path="res://sprites/grey_boxCheckmark.png" id="1_ejjr0"]
-[ext_resource type="Texture2D" uid="uid://bp4b0jyx7xelk" path="res://sprites/grey_box.png" id="2_r46nd"]
+[ext_resource type="Texture2D" uid="uid://ct0ocwcny86ka" path="res://sprites/Menu/grey_boxCheckmark.png" id="1_ejjr0"]
+[ext_resource type="Texture2D" uid="uid://bp4b0jyx7xelk" path="res://sprites/Menu/grey_box.png" id="2_r46nd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wtkj0"]
 bg_color = Color(0.0705882, 0.0705882, 0.0705882, 0.85098)

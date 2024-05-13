@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ct0ocwcny86ka"
-path="res://.godot/imported/grey_boxCheckmark.png-e9f7491dcbf2587564354f3f16e69f65.ctex"
+uid="uid://bp4b0jyx7xelk"
+path="res://.godot/imported/grey_box.png-05f85ed78dbdad0d1bdb75e2b0390cfc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/grey_boxCheckmark.png"
-dest_files=["res://.godot/imported/grey_boxCheckmark.png-e9f7491dcbf2587564354f3f16e69f65.ctex"]
+source_file="res://sprites/Menu/grey_box.png"
+dest_files=["res://.godot/imported/grey_box.png-05f85ed78dbdad0d1bdb75e2b0390cfc.ctex"]
 
 [params]
 

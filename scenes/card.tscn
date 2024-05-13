@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://codyeer8uogki"]
 
 [ext_resource type="Script" path="res://scripts/card.gd" id="1_n4h6d"]
-[ext_resource type="Texture2D" uid="uid://bbxjy0ak2sj8n" path="res://3S.svg" id="2_7e5ba"]
+[ext_resource type="Texture2D" uid="uid://bd04s5fx3afh6" path="res://sprites/BaseCards/CardBackgroundBlack.svg" id="2_hopqe"]
 
 [node name="Card" type="Control"]
 custom_minimum_size = Vector2(240, 0)
@@ -20,7 +20,7 @@ offset_top = -336.0
 offset_right = 240.0
 grow_vertical = 0
 pivot_offset = Vector2(0, 336)
-texture = ExtResource("2_7e5ba")
+texture = ExtResource("2_hopqe")
 expand_mode = 4
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]

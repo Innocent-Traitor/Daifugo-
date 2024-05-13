@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://lu6lki5p8i8t"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_lxy5w"]
-[ext_resource type="Texture2D" uid="uid://c7633ec5gtmai" path="res://sprites/leaderboardsComplex.png" id="2_83qko"]
+[ext_resource type="Texture2D" uid="uid://c7633ec5gtmai" path="res://sprites/Menu/leaderboardsComplex.png" id="2_83qko"]
 [ext_resource type="Theme" uid="uid://3yabb5f6pk4x" path="res://resources/main_theme.tres" id="3_3urjr"]
 [ext_resource type="Texture2D" uid="uid://x4t3gir5a7ya" path="res://sprites/Menu/MoonsoftLogo.png" id="4_1mfp8"]
 [ext_resource type="Texture2D" uid="uid://bpmjbsjd3u33x" path="res://sprites/Menu/discord.svg" id="5_fckao"]
@@ -26,7 +26,6 @@ grow_vertical = 2
 color = Color(0, 0.466667, 0.188235, 1)
 
 [node name="TextureRect" type="TextureRect" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -42,7 +41,6 @@ grow_vertical = 2
 texture = ExtResource("2_83qko")
 
 [node name="MainContainer" type="VBoxContainer" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -309,6 +307,7 @@ layout_mode = 2
 text = "Reset Score"
 
 [node name="SettingsContainer" type="PanelContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.05
@@ -425,7 +424,6 @@ layout_mode = 2
 text = "Return"
 
 [node name="AboutContainer" type="PanelContainer" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.05
@@ -435,6 +433,7 @@ anchor_bottom = 0.9
 grow_horizontal = 2
 
 [node name="MainContainer" type="VBoxContainer" parent="AboutContainer"]
+visible = false
 layout_mode = 2
 
 [node name="LogoContainer" type="CenterContainer" parent="AboutContainer/MainContainer"]
@@ -547,11 +546,16 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="LicenseContainer" type="VBoxContainer" parent="AboutContainer"]
-visible = false
 layout_mode = 2
 
-[node name="Label" type="Label" parent="AboutContainer/LicenseContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="AboutContainer/LicenseContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="AboutContainer/LicenseContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
 theme_override_font_sizes/font_size = 18
 text = "This game uses Godot Engine, available under the following license:
 
@@ -563,7 +567,11 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+===========================
+
 Portions of this software are copyright © 1996-2023 The FreeType Project (www.freetype.org). All rights reserved.
+
+==========================
 
 Copyright (c) 2002-2020 Lee Salzman
 
@@ -573,6 +581,8 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+==========================
+
 Copyright The Mbed TLS Contributors
 
 Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
@@ -580,20 +590,27 @@ Licensed under the Apache License, Version 2.0 (the \"License\"); you may not us
 http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+
+==========================
+
+Playing card SVGs provided by Adrian Kennard under CC0 Public Domain license. https://www.revk.uk/
+
+Additional menu sprites provided by Kenney under Creative Commons CC0. https://kenney.nl/
+
 "
 autowrap_mode = 2
 
 [node name="Spacer" type="Control" parent="AboutContainer/LicenseContainer"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-size_flags_vertical = 3
 
 [node name="LicenseReturnButton" type="Button" parent="AboutContainer/LicenseContainer"]
 layout_mode = 2
 text = "Return to Menu"
 
 [node name="Spacer2" type="Control" parent="AboutContainer/LicenseContainer"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-size_flags_vertical = 3
 
 [node name="AdPlaceholder" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(0, 150)

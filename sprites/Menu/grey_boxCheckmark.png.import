@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbxjy0ak2sj8n"
-path="res://.godot/imported/3S.svg-d72e396f7c46d2b971cc33e08505aa62.ctex"
+uid="uid://ct0ocwcny86ka"
+path="res://.godot/imported/grey_boxCheckmark.png-26289da7b7346db793da32acc190b34b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://3S.svg"
-dest_files=["res://.godot/imported/3S.svg-d72e396f7c46d2b971cc33e08505aa62.ctex"]
+source_file="res://sprites/Menu/grey_boxCheckmark.png"
+dest_files=["res://.godot/imported/grey_boxCheckmark.png-26289da7b7346db793da32acc190b34b.ctex"]
 
 [params]
 
@@ -32,6 +32,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false
