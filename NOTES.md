@@ -32,4 +32,4 @@ Trading at the beginning of the round
 
 
 Bugs:
-Sometimes if there are two jokers, only one gets moved over to the top of the hand and the other is at the bottom
+Sometimes if there are two jokers, only one gets moved over to the top of the hand and the other is at the bottom <- Maybe Fixed
