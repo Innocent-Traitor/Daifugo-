@@ -1,5 +1,5 @@
 # Godot 4+ specific ignores
 .godot/
+android/
 # VSCode Debugging ignore
 .vscode/
-android/

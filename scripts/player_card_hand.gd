@@ -5,15 +5,6 @@ extends HBoxContainer
 var selected_cards = []
 var selected_card_value = 0
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass
-
 ## Add a card to the hand, and connect the select signals
 func add_card(card_id):
 	var new_card = card_scene.instantiate()
@@ -26,6 +17,12 @@ func add_card(card_id):
 func sort_cards():
 	var sorted_cards = get_children()
 	sorted_cards.sort_custom(func(a, b): return a.card_value < b.card_value)
+
+	# Add jokers to the end
+	for card in sorted_cards:
+		if card.card_value == -1:
+			sorted_cards.erase(card)
+			sorted_cards.append(card)
 	
 	for node in get_children():
 		remove_child(node)
@@ -39,7 +36,13 @@ func on_card_selected(card_id):
 	if selected_cards.is_empty():
 		selected_card_value = card.value
 	
-	if card.value == selected_card_value:
+	if selected_card_value == -1:
+		selected_cards.append(card_id)
+		get_node(card_id).select()
+		selected_card_value = card.value
+		return
+	
+	if card.value == selected_card_value or card.suit == "J":
 		selected_cards.append(card_id)
 		get_node(card_id).select()
 
@@ -49,6 +52,9 @@ func on_card_unselected(card_id):
 		selected_card_value = 0
 	selected_cards.erase(card_id)
 	get_node(card_id).deselect()
+
+	if contains_only_jokers():
+		selected_card_value = -1
 
 ## Find all cards that are able to be discarded and highlight them.
 ## Returns true if there are any valid cards
@@ -112,3 +118,7 @@ func end_turn():
 
 	get_node("%DiscardButton").disabled = true
 	get_node("%PassButton").disabled = true
+
+## Checks to see if it's only jokers in the selected cards
+func contains_only_jokers() -> bool:
+	return selected_cards.all(func(_card: String) -> bool: return _card == "JR" or _card == "JB")

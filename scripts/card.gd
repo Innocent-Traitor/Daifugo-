@@ -15,11 +15,15 @@ signal card_unselected(card_id)
 func _ready():
 	name = card_id
 	card_suit = card_id.substr(0, 1)
-	if card_suit == "J":
-		print("Joker")
-		return
-	
 	var match_value = card_id.substr(1, 1)
+
+	$SpriteTexture.texture = load("res://sprites/BaseCards/%s.svg" % card_id)
+
+	if card_suit == "J":
+		if match_value == "R" or match_value == "B":
+			card_value = -1
+			return
+	
 	match match_value:
 		"1":
 			card_value = 10
@@ -34,15 +38,9 @@ func _ready():
 		"2":
 			card_value = 15
 		_:
-			card_value = int(match_value)
-	
-	$SpriteTexture.texture = load("res://sprites/BaseCards/%s.svg" % card_id)
-		
+			card_value = int(match_value)	
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass
-
+## Allows the card to be selected and unselected
 func _on_gui_input(event):
 	if event is InputEventMouseButton and event.is_pressed():
 		if !is_valid: return
@@ -51,11 +49,13 @@ func _on_gui_input(event):
 		else:
 			emit_signal("card_unselected", card_id)
 
+## Makes the card highlighted
 func select():
 	$SpriteTexture.scale = Vector2(1.1, 1.1)	
 	$SpriteTexture.position.y -= 20
 	is_selected = true
 
+## Makes the care unhighlighted
 func deselect():
 	$SpriteTexture.scale = Vector2(1, 1)
 	$SpriteTexture.position.y += 20

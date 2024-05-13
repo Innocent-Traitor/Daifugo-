@@ -27,6 +27,9 @@ Be able to play the game from the beginning, and it actually works
 
 
 Things Left To Do:
-Joker does the thing it's supposed to
 AI does the thing it's supposed to
 Trading at the beginning of the round
+
+
+Bugs:
+Sometimes if there are two jokers, only one gets moved over to the top of the hand and the other is at the bottom

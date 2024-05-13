@@ -63,7 +63,10 @@ func is_valid_discard(cards: Array) -> bool:
 ## When a player has discarded a hand
 func recieve_discard(cards : Array):
 	var card = get_card_info(cards[0])
-	discard_value = card.value
+	if cards.all(func(_card: String) -> bool: return _card == "JR" or _card == "JB"):
+		discard_value = 16
+	else:
+		discard_value = card.value
 	current_discard = cards
 	$DiscardPile.update_discard(current_discard)
 	rotate_turn()
@@ -98,6 +101,8 @@ func rotate_turn():
 ## Check to see if the card is able to be discarded
 func is_card_valid(card_id) -> bool:
 	var card = get_card_info(card_id)
+	if card.suit == "J":
+		return true
 	return card.value > discard_value
 
 ## Called from a player when they finish their hand
@@ -131,7 +136,7 @@ func get_card_info(card_id) -> Dictionary:
 		card_info = card_id
 
 	if card_info.suit == "J":
-		print("Joker")
+		card_info.value = -1
 	
 	match card_info.value:
 		"1":
