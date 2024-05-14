@@ -21,37 +21,56 @@ func sort_cards():
 	)
 
 ## Finds the most common card of the lowest value
-func find_most_common_card() -> Array:
+## FIXME: This shit fucking sucks
+func find_most_common_card(hand: Array) -> Array:
 	var card_count = {}
+	var needed_discard = len(get_parent().current_discard)
 
-	for card in card_hand:
+	for card in hand:
 		var card_value = get_parent().get_card_info(card).value
-		if not card_value == -1:
+		if card_value <= get_parent().discard_value:
+			pass
+		elif not card_value == -1:
 			if card_count.has(card_value):
 				card_count[card_value] += 1
 			else:
 				card_count[card_value] = 1
+
+	var good_count = {}
+	for count in card_count:
+		if card_count[count] >= needed_discard:
+			good_count[count] = card_count[count]
 	
-	var most_common_card = []
+	var most_common_card
 	var max_count = 0
 
-	for card in card_count:
+	for card in good_count:
 		var count = card_count[card]
 		if count > max_count:
 			max_count = count
 			most_common_card = card
 	
-	var arr = card_hand.filter(func (card: String) -> bool: 
+	var arr = hand.filter(func (card: String) -> bool: 
 		return get_parent().get_card_info(card).value == most_common_card
 	)
+
+	for i in (len(arr) - needed_discard):
+		arr.pop_front()
+
+	if not len(arr) == needed_discard:
+		return []
 
 	return arr
 
 
 func start_turn():
-	print(find_most_common_card())
-	await get_tree().create_timer(0.1).timeout
-	get_parent().recieve_pass()
+	var discard = find_most_common_card(card_hand)
+	await get_tree().create_timer(0.25).timeout
+	if discard == []:
+		get_parent().recieve_pass()
+	else:
+		get_parent().recieve_discard(discard)
+		discard_cards(discard)
 
 ## Go through all the cards and see what the greatest amount of the same value is
 ## Then, find the lowest value of those cards
@@ -60,5 +79,9 @@ func start_turn():
 
 ## Discard all selected cards
 func discard_cards(discarded_cards):
+	var index = 0
 	for card in discarded_cards:
-		get_node(card).queue_free()
+		card_hand.erase(card)
+		get_child(index).queue_free()
+		index += 1
+

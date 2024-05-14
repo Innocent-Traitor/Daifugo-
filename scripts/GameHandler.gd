@@ -33,12 +33,13 @@ func deal_cards():
 	var dealer = Dealer.new()
 	dealer.requested_decks = 1
 	dealer.prepare_to_deal(1)
-	for i in (dealer.requested_decks * 52 / 4):
-		# TODO: Adjust it so for the bots it is in a for loop to better support different amount of bot players
-		$Player0.add_card(dealer.undealt_cards.pop_back())
-		$Player1.add_card(dealer.undealt_cards.pop_back())
-		$Player2.add_card(dealer.undealt_cards.pop_back())
-		$Player3.add_card(dealer.undealt_cards.pop_back())
+	var num_of_cards = len(dealer.undealt_cards)
+	var index = 0
+	for i in (num_of_cards):
+		get_node("Player" + str(index)).add_card(dealer.get_card())
+		index += 1
+		if index > 3:
+			index = 0
 	for i in 4:
 		get_node("Player" + str(i)).sort_cards()
 	$Player0.find_valid_cards()
@@ -76,7 +77,7 @@ func recieve_discard(cards : Array):
 ## When a player passes their turn
 func recieve_pass():
 	$Labels/PassLabel.visible = true
-	await get_tree().create_timer(0.1).timeout
+	await get_tree().create_timer(0.25).timeout
 	$Labels/PassLabel.visible = false
 
 	pass_count += 1

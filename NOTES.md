@@ -27,9 +27,11 @@ Be able to play the game from the beginning, and it actually works
 
 
 Things Left To Do:
-AI does the thing it's supposed to
+AI get assigned their rank at the end of round
 Trading at the beginning of the round
 
 
 Bugs:
-Sometimes if there are two jokers, only one gets moved over to the top of the hand and the other is at the bottom <- Maybe Fixed
+Sometimes if there are two jokers, only one gets moved over to the top of the hand and the other is at the bottom
+If 2 or more cards are played together, and it becomes the players turn, it will highlight cards of higher ranking, even if you don't have enough to play that card
+AI does not try to play as many of the same card if they are starting the turn

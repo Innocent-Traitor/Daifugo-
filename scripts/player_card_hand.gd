@@ -7,6 +7,9 @@ var selected_card_value = 0
 
 ## Add a card to the hand, and connect the select signals
 func add_card(card_id):
+	if card_id == null:
+		print(name, " recieved null card")
+		return
 	var new_card = card_scene.instantiate()
 	new_card.card_id = card_id
 	new_card.connect("card_selected", Callable(self, "on_card_selected"))
@@ -33,6 +36,10 @@ func sort_cards():
 
 
 func on_card_selected(card_id):
+	# Makes sure we can't select more than 4 cards
+	if len(selected_cards) == 4:
+		return
+
 	var card = %GameHandler.get_card_info(card_id)
 	if selected_cards.is_empty():
 		selected_card_value = card.value
