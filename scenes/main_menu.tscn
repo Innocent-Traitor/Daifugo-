@@ -647,6 +647,7 @@ grow_horizontal = 2
 grow_vertical = 0
 color = Color(1, 0.443137, 0.376471, 1)
 
+[connection signal="pressed" from="MainContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MainContainer/StatsButton" to="." method="_on_stats_button_pressed"]
 [connection signal="pressed" from="MainContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="MainContainer/AboutButton" to="." method="_on_about_button_pressed"]

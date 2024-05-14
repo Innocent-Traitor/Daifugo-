@@ -3,7 +3,7 @@ extends Node
 var round_number = 0
 
 ## Whose turn is it right now?
-var turn_order : int
+var turn_order : int = 0
 ## How many passed turns have we had?
 var pass_count : int = 0
 
@@ -14,6 +14,14 @@ var discard_value : int = 1
 
 ## List of players that have finished by id
 var finished_players : Array = []
+
+## Trade cards at the beginning of a new round
+var card_trade = {
+	'daifugo' : ["", ""],
+	'fugo' : [""],
+	'hinmin' : [""],
+	'daihinmin' : ["", ""],
+}
 
 
 func _ready():
@@ -38,8 +46,15 @@ func new_round():
 	else:
 		rename_labels()
 		deal_cards()
-	
+
 	round_number += 1
+
+func handle_trade():
+	$GameHandler/Labels/ActionLabel.text = "Select cards to trade"
+	$GameHandler/Labels/ActionLabel.visible = true
+	for i in 4:
+		var rank = get_node("Labels/Player" + str(i) + "/Player" + str(i) + "Label").text
+		get_node("Player" + str(i)).init_trade(rank.to_lower())
 
 ## Set up for a new hand
 func new_hand():
@@ -68,7 +83,6 @@ func deal_cards():
 	$Player2.init_hand()
 	$Player3.init_hand()
 
-	turn_order = 0
 	get_node("Labels/Player" + str(turn_order) + "/Player" + str(turn_order) + "Name").theme_type_variation = "SelectedPlayerLabel"
 	$Player0.start_turn()
 
@@ -191,3 +205,8 @@ func rename_labels():
 	for i in 4:
 		var rank = get_node("Labels/Player" + str(i) + "Rank").text
 		get_node("Labels/Player" + str(i) + "/Player" + str(i) + "Label").text = rank
+
+## Trade cards at the beginning of a new round
+func trade_cards():
+	for i in 4:
+		get_node("Player" + str(i)).trade_cards()

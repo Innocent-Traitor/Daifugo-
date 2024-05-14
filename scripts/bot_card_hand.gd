@@ -79,9 +79,6 @@ func start_turn():
 		var self_name = self.name.substr(6, 1)
 		get_parent().player_finish_hand(int(self_name))
 
-
-
-
 ## Discard all selected cards
 func discard_cards(discarded_cards):
 	var index = 0

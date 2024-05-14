@@ -5,6 +5,12 @@ extends HBoxContainer
 var selected_cards = []
 var selected_card_value = 0
 
+var trading = false
+var round_rank = 'heimen'
+
+signal ready_to_trade(cards : Array)
+signal trade_cards(rank : String, cards : Array)
+
 ## Add a card to the hand, and connect the select signals
 func add_card(card_id):
 	if card_id == null:
@@ -36,6 +42,16 @@ func sort_cards():
 
 
 func on_card_selected(card_id):
+	if trading: # Handles start of round trading
+		if round_rank == 'fugo' and len(selected_cards) == 1:
+			return
+		elif round_rank == 'daifugo' and len(selected_cards) == 2:
+			return
+		
+		selected_cards.append(card_id)
+		get_node(card_id).select()
+		return
+			
 	# Makes sure we can't select more than 4 cards
 	if len(selected_cards) == 4:
 		return
@@ -84,6 +100,14 @@ func _on_discard_button_pressed():
 	if selected_cards.is_empty():
 		return
 
+	if trading:
+		if round_rank == 'daifugo' and len(selected_cards) != 2:
+			return
+		elif round_rank == 'fugo' and len(selected_cards) != 1:
+			return
+		else:
+			emit_signal("ready_to_trade", selected_cards)
+
 	if not get_parent().is_valid_discard(selected_cards):
 		return
 
@@ -130,3 +154,32 @@ func end_turn():
 ## Checks to see if it's only jokers in the selected cards
 func contains_only_jokers() -> bool:
 	return selected_cards.all(func(_card: String) -> bool: return _card == "JR" or _card == "JB")
+
+## Trading cards at beginning of round logic
+func init_trade(rank : String):
+	trading = true
+	round_rank = rank
+
+	var current_hand = get_children()
+	match rank:
+		"hinmin":
+			selected_cards.append(current_hand[-1])
+			for card in current_hand - 1:
+				card.is_valid = false
+				card.modulate = Color(0.5, 0.5, 0.5, 1)
+			selected_cards[0].is_valid = false
+			selected_cards[0].modulate = Color(1, 1, 1, 1)
+
+		"daihinmin":
+			selected_cards.append(current_hand[-1])
+			selected_cards.append(current_hand[-2])
+			for card in current_hand - 2:
+				card.is_valid = false
+				card.modulate = Color(0.5, 0.5, 0.5, 1)
+			for card in selected_cards:
+				card.is_valid = false
+				card.modulate = Color(1, 1, 1, 1)
+
+
+func _on_ready_to_trade(cards:Array) -> void:
+	pass # Replace with function body.

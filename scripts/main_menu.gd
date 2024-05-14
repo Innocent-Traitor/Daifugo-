@@ -49,3 +49,6 @@ func _on_discord_button_pressed():
 
 func _on_privacy_button_pressed():
 	OS.shell_open("https://www.moonsoftstudios.com/daifugo/privacy.html")
+
+func _on_play_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/main_scene.tscn")
