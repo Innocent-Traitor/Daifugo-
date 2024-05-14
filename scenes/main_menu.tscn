@@ -91,7 +91,7 @@ size_flags_vertical = 3
 [node name="StatsButton" type="Button" parent="MainContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Stats"
+text = "Stats (WIP)"
 
 [node name="Spacer2" type="Control" parent="MainContainer"]
 layout_mode = 2
@@ -100,7 +100,7 @@ size_flags_vertical = 3
 [node name="SettingsButton" type="Button" parent="MainContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Settings"
+text = "Settings (WIP)"
 
 [node name="Spacer3" type="Control" parent="MainContainer"]
 layout_mode = 2
@@ -109,7 +109,7 @@ size_flags_vertical = 3
 [node name="HowToButton" type="Button" parent="MainContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "How to Play"
+text = "How to Play (WIP)"
 
 [node name="Spacer4" type="Control" parent="MainContainer"]
 layout_mode = 2
@@ -551,7 +551,6 @@ custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 
 [node name="PrivacyButton" type="Button" parent="AboutContainer/MainContainer"]
-visible = false
 layout_mode = 2
 text = "Privacy Policy"
 
@@ -647,7 +646,6 @@ grow_horizontal = 2
 grow_vertical = 0
 color = Color(1, 0.443137, 0.376471, 1)
 
-[connection signal="pressed" from="MainContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MainContainer/StatsButton" to="." method="_on_stats_button_pressed"]
 [connection signal="pressed" from="MainContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="MainContainer/AboutButton" to="." method="_on_about_button_pressed"]
@@ -655,5 +653,6 @@ color = Color(1, 0.443137, 0.376471, 1)
 [connection signal="pressed" from="AboutContainer/MainContainer/DiscordContainer/DiscordButton" to="." method="_on_discord_button_pressed"]
 [connection signal="pressed" from="AboutContainer/MainContainer/GithubContainer/GithubButton" to="." method="_on_github_button_pressed"]
 [connection signal="pressed" from="AboutContainer/MainContainer/LicenseButton" to="." method="_on_license_button_pressed"]
+[connection signal="pressed" from="AboutContainer/MainContainer/PrivacyButton" to="." method="_on_privacy_button_pressed"]
 [connection signal="pressed" from="AboutContainer/MainContainer/AboutReturnButton" to="." method="_on_about_return_button_pressed"]
 [connection signal="pressed" from="AboutContainer/LicenseContainer/LicenseReturnButton" to="." method="_on_license_return_button_pressed"]
