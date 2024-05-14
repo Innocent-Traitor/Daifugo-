@@ -269,5 +269,6 @@ layout_mode = 2
 text = "Heimen"
 horizontal_alignment = 1
 
+[connection signal="trade_cards" from="GameHandler/Player0" to="GameHandler" method="recieve_trade"]
 [connection signal="pressed" from="GameHandler/Buttons/PassButton" to="GameHandler/Player0" method="_on_pass_button_pressed"]
 [connection signal="pressed" from="GameHandler/Buttons/DiscardButton" to="GameHandler/Player0" method="_on_discard_button_pressed"]

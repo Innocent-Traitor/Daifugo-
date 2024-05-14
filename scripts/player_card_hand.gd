@@ -108,6 +108,7 @@ func _on_discard_button_pressed():
 		else:
 			emit_signal("trade_cards", round_rank, selected_cards)
 			trading = false
+			return
 
 	if not get_parent().is_valid_discard(selected_cards):
 		return
@@ -164,24 +165,27 @@ func init_trade(rank : String):
 
 
 	var current_hand = get_children()
+	var node
 	match rank:
 		"hinmin":
-			selected_cards.append(current_hand[-1])
-			for card in current_hand - 1:
+			selected_cards.append(current_hand[-1].card_id)
+			for card in current_hand:
 				card.is_valid = false
 				card.modulate = Color(0.5, 0.5, 0.5, 1)
-			selected_cards[0].is_valid = false
-			selected_cards[0].modulate = Color(1, 1, 1, 1)
+			node = get_node(selected_cards[0])
+			node.is_valid = false
+			node.modulate = Color(1, 1, 1, 1)
 
 		"daihinmin":
-			selected_cards.append(current_hand[-1])
-			selected_cards.append(current_hand[-2])
-			for card in current_hand - 2:
+			selected_cards.append(current_hand[-1].card_id)
+			selected_cards.append(current_hand[-2].card_id)
+			for card in current_hand:
 				card.is_valid = false
 				card.modulate = Color(0.5, 0.5, 0.5, 1)
 			for card in selected_cards:
-				card.is_valid = false
-				card.modulate = Color(1, 1, 1, 1)
+				node = get_node(card)
+				node.is_valid = false
+				node.modulate = Color(1, 1, 1, 1)
 		
 		"heimen":
 			for card in current_hand:
