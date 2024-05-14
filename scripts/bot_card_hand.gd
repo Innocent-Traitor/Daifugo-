@@ -4,6 +4,9 @@ extends HBoxContainer
 
 var card_hand = []
 
+## Signal to the game handler that we are trading
+signal trade_cards(rank : String, cards : Array)
+
 func add_card(card_id):
 	card_hand.append(card_id)
 
@@ -87,3 +90,5 @@ func discard_cards(discarded_cards):
 		get_child(index).queue_free()
 		index += 1
 
+func init_trade(rank : String):
+	pass

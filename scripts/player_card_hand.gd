@@ -8,7 +8,7 @@ var selected_card_value = 0
 var trading = false
 var round_rank = 'heimen'
 
-signal ready_to_trade(cards : Array)
+## Signal to the game handler that we are trading
 signal trade_cards(rank : String, cards : Array)
 
 ## Add a card to the hand, and connect the select signals
@@ -106,7 +106,8 @@ func _on_discard_button_pressed():
 		elif round_rank == 'fugo' and len(selected_cards) != 1:
 			return
 		else:
-			emit_signal("ready_to_trade", selected_cards)
+			emit_signal("trade_cards", round_rank, selected_cards)
+			trading = false
 
 	if not get_parent().is_valid_discard(selected_cards):
 		return
@@ -159,6 +160,8 @@ func contains_only_jokers() -> bool:
 func init_trade(rank : String):
 	trading = true
 	round_rank = rank
+	get_node("%DiscardButton").disabled = false
+
 
 	var current_hand = get_children()
 	match rank:
@@ -179,7 +182,8 @@ func init_trade(rank : String):
 			for card in selected_cards:
 				card.is_valid = false
 				card.modulate = Color(1, 1, 1, 1)
-
-
-func _on_ready_to_trade(cards:Array) -> void:
-	pass # Replace with function body.
+		
+		"heimen":
+			for card in current_hand:
+				card.is_valid = false
+				card.modulate = Color(0.5, 0.5, 0.5, 1)
