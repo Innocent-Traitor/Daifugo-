@@ -1,5 +1,6 @@
 extends Node
 
+var round_number = 0
 
 ## Whose turn is it right now?
 var turn_order : int
@@ -18,9 +19,29 @@ var finished_players : Array = []
 func _ready():
 	new_round()
 
+## Set up for a new round
 func new_round():
-	deal_cards()
+	for i in 4:
+		get_node("Labels/Player" + str(i) + "/Player" + str(i) + "Name").theme_type_variation = ""
+		get_node("Labels/Player" + str(i) + "Rank").visible = false
+	
+	$Player1.card_hand = []
+	$Player2.card_hand = []
+	$Player3.card_hand = []
+	pass_count = 0
+	current_discard = [""]
+	discard_value = 1
+	finished_players = []
+		
+	if round_number == 0:
+		deal_cards()
+	else:
+		rename_labels()
+		deal_cards()
+	
+	round_number += 1
 
+## Set up for a new hand
 func new_hand():
 	pass_count = 0
 	current_discard = [""]
@@ -49,6 +70,7 @@ func deal_cards():
 
 	turn_order = 0
 	get_node("Labels/Player" + str(turn_order) + "/Player" + str(turn_order) + "Name").theme_type_variation = "SelectedPlayerLabel"
+	$Player0.start_turn()
 
 ## Checks to see if a discard is valid
 func is_valid_discard(cards: Array) -> bool:
@@ -92,6 +114,8 @@ func recieve_pass():
 func rotate_turn():
 	if turn_order == -1:
 		print('game finished')
+		await get_tree().create_timer(5).timeout
+		new_round()
 		return
 	get_node("Labels/Player" + str(turn_order) + "/Player" + str(turn_order) + "Name").theme_type_variation = ""
 	turn_order = (turn_order + 1) % 4
@@ -162,3 +186,8 @@ func get_card_info(card_id) -> Dictionary:
 			card_info.value = int(card_info.value)
 	return card_info
 
+## Rename the player labels reflected by the previous round
+func rename_labels():
+	for i in 4:
+		var rank = get_node("Labels/Player" + str(i) + "Rank").text
+		get_node("Labels/Player" + str(i) + "/Player" + str(i) + "Label").text = rank

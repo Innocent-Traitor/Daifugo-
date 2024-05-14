@@ -138,6 +138,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_type_variation = &"HeaderLabel"
 text = "Daifugo"
+horizontal_alignment = 1
 
 [node name="Player1Rank" type="Label" parent="GameHandler/Labels"]
 visible = false
@@ -152,6 +153,7 @@ grow_horizontal = 2
 grow_vertical = 2
 rotation = -1.5708
 text = "Daifugo"
+horizontal_alignment = 1
 
 [node name="Player2Rank" type="Label" parent="GameHandler/Labels"]
 visible = false
@@ -166,6 +168,7 @@ offset_right = 89.5
 offset_bottom = 67.0
 grow_horizontal = 2
 text = "Daifugo"
+horizontal_alignment = 1
 
 [node name="Player3Rank" type="Label" parent="GameHandler/Labels"]
 visible = false
@@ -180,6 +183,7 @@ offset_bottom = 50.0
 grow_vertical = 2
 rotation = 1.5708
 text = "Daifugo"
+horizontal_alignment = 1
 
 [node name="Player0" type="VBoxContainer" parent="GameHandler/Labels"]
 layout_mode = 1
@@ -215,14 +219,14 @@ anchor_bottom = 0.3
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Player1Name" type="Label" parent="GameHandler/Labels/Player1"]
-layout_mode = 2
-text = "Monika"
-horizontal_alignment = 1
-
 [node name="Player1Label" type="Label" parent="GameHandler/Labels/Player1"]
 layout_mode = 2
 text = "Heimen"
+horizontal_alignment = 1
+
+[node name="Player1Name" type="Label" parent="GameHandler/Labels/Player1"]
+layout_mode = 2
+text = "Monika"
 horizontal_alignment = 1
 
 [node name="Player2" type="VBoxContainer" parent="GameHandler/Labels"]

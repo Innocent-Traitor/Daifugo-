@@ -27,7 +27,6 @@ Be able to play the game from the beginning, and it actually works
 
 
 Things Left To Do:
-AI get assigned their rank at the end of round
 Trading at the beginning of the round
 
 
