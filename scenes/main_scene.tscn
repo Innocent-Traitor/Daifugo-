@@ -219,14 +219,14 @@ anchor_bottom = 0.3
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Player1Label" type="Label" parent="GameHandler/Labels/Player1"]
-layout_mode = 2
-text = "Heimen"
-horizontal_alignment = 1
-
 [node name="Player1Name" type="Label" parent="GameHandler/Labels/Player1"]
 layout_mode = 2
 text = "Monika"
+horizontal_alignment = 1
+
+[node name="Player1Label" type="Label" parent="GameHandler/Labels/Player1"]
+layout_mode = 2
+text = "Heimen"
 horizontal_alignment = 1
 
 [node name="Player2" type="VBoxContainer" parent="GameHandler/Labels"]

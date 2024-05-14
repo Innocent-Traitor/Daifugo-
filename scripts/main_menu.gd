@@ -46,3 +46,6 @@ func _on_github_button_pressed():
 
 func _on_discord_button_pressed():
 	OS.shell_open("https://discord.gg/Cv7hBAK65P")
+
+func _on_privacy_button_pressed():
+	OS.shell_open("https://www.moonsoftstudios.com/daifugo/privacy.html")

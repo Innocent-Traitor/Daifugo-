@@ -24,6 +24,7 @@ This project was started due to the lack of english translated version of daifug
 - [ ] - Different amount of players
 
 ### Other nice things that probably won't come for a while
+- [ ] - In-Game Tutorials
 - [ ] - Multiplayer
 - [ ] - iOS version
 - [ ] - AI uses different strategies
