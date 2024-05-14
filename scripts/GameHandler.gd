@@ -71,8 +71,8 @@ func recieve_discard(cards : Array):
 		discard_value = card.value
 	current_discard = cards
 	$DiscardPile.update_discard(current_discard)
-	rotate_turn()
 	pass_count = 0
+	call_deferred("rotate_turn")
 
 ## When a player passes their turn
 func recieve_pass():
@@ -82,18 +82,20 @@ func recieve_pass():
 
 	pass_count += 1
 	# If 3 passes in a row, start a new hand TODO: Set this up for different amount of players
-	if pass_count == 3:
+	if pass_count == 3 - len(finished_players):
 		new_hand()
 		return
 
-	rotate_turn()
+	call_deferred("rotate_turn")
 
 ## Start the next player's turn
 func rotate_turn():
+	if turn_order == -1:
+		print('game finished')
+		return
 	get_node("Labels/Player" + str(turn_order) + "/Player" + str(turn_order) + "Name").theme_type_variation = ""
 	turn_order = (turn_order + 1) % 4
 	if turn_order in finished_players:
-		print('finished turn')
 		rotate_turn()
 		return
 		
@@ -127,6 +129,9 @@ func player_finish_hand(player : int):
 			if i not in finished_players:
 				get_node("Labels/Player" + str(i) + "Rank").text = 'Daihinmin'
 				get_node("Labels/Player" + str(i) + "Rank").visible = true
+				for child in get_node("Player" + str(i)).get_children():
+					child.queue_free()
+				turn_order = -1
 
 ## Returns a dictionary with the card value and suit
 func get_card_info(card_id) -> Dictionary:

@@ -64,17 +64,22 @@ func find_most_common_card(hand: Array) -> Array:
 
 
 func start_turn():
+	if get_child_count() == 0:
+		get_parent().recieve_pass()
 	var discard = find_most_common_card(card_hand)
-	await get_tree().create_timer(0.25).timeout
+	await get_tree().create_timer(1).timeout
+
 	if discard == []:
 		get_parent().recieve_pass()
 	else:
 		get_parent().recieve_discard(discard)
 		discard_cards(discard)
+	
+	if len(card_hand) == 0:
+		var self_name = self.name.substr(6, 1)
+		get_parent().player_finish_hand(int(self_name))
 
-## Go through all the cards and see what the greatest amount of the same value is
-## Then, find the lowest value of those cards
-# ["D2", "H4", "C5", "H7", "C7", "S9", "DQ", "HQ", "SQ", "HK", "CK", "DK"]
+
 
 
 ## Discard all selected cards
