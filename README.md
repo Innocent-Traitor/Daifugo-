@@ -11,6 +11,7 @@ This project was started due to the lack of english translated version of daifug
 ### Rules
 - [ ] - 5 Skip
 - [ ] - 8 Ender
+- [ ] - 3 of Spades Pay Back
 - [ ] - First Play
 - [ ] - Forbidden Last Card
 - [ ] - Sequence
@@ -18,6 +19,8 @@ This project was started due to the lack of english translated version of daifug
 
 ### QoL
 - [ ] - Stats
+- [ ] - Saves game
+- [ ] - In-game sounds
 - [ ] - Customizable Cards
 - [ ] - Change term language (Daifugo = President)
 - [ ] - Auto Pass

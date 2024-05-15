@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cj8g6ab8mfwni"]
+[gd_scene load_steps=6 format=3 uid="uid://cj8g6ab8mfwni"]
 
 [ext_resource type="PackedScene" uid="uid://kbbpv2pth1s2" path="res://scenes/game_handler.tscn" id="1_0c8r3"]
 [ext_resource type="PackedScene" uid="uid://ckqnp7njam2lm" path="res://scenes/discard_pile.tscn" id="2_lti3k"]
 [ext_resource type="PackedScene" uid="uid://dkajx7tmty2jj" path="res://scenes/card_hand.tscn" id="3_pstii"]
 [ext_resource type="PackedScene" uid="uid://vv61fl6h6a1m" path="res://scenes/bot_card_hand.tscn" id="4_tcix5"]
+[ext_resource type="Script" path="res://scenes/menu_buttons.gd" id="5_8gay0"]
 
 [node name="MainScene" type="Node"]
 
@@ -14,6 +15,38 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0.466667, 0.188235, 1)
+
+[node name="MenuButtons" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_8gay0")
+
+[node name="MenuButton" type="Button" parent="MenuButtons"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.025
+anchor_top = 0.025
+anchor_right = 0.025
+anchor_bottom = 0.025
+offset_right = 267.0
+offset_bottom = 75.0
+text = "Main Menu"
+
+[node name="NewButton" type="Button" parent="MenuButtons"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.975
+anchor_top = 0.025
+anchor_right = 0.975
+anchor_bottom = 0.025
+offset_left = -262.0
+offset_bottom = 75.0
+grow_horizontal = 0
+text = "New Game"
 
 [node name="GameHandler" parent="." instance=ExtResource("1_0c8r3")]
 unique_name_in_owner = true
@@ -269,6 +302,8 @@ layout_mode = 2
 text = "Heimen"
 horizontal_alignment = 1
 
+[connection signal="pressed" from="MenuButtons/MenuButton" to="MenuButtons" method="_on_menu_button_pressed"]
+[connection signal="pressed" from="MenuButtons/NewButton" to="MenuButtons" method="_on_new_button_pressed"]
 [connection signal="trade_cards" from="GameHandler/Player0" to="GameHandler" method="recieve_trade"]
 [connection signal="trade_cards" from="GameHandler/Player1" to="GameHandler" method="recieve_trade"]
 [connection signal="trade_cards" from="GameHandler/Player2" to="GameHandler" method="recieve_trade"]

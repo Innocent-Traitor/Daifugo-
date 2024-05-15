@@ -130,7 +130,6 @@ func recieve_pass():
 ## Start the next player's turn
 func rotate_turn():
 	if turn_order == -1:
-		print('game finished')
 		await get_tree().create_timer(1).timeout
 		new_round()
 		return
@@ -152,7 +151,6 @@ func is_card_valid(card_id) -> bool:
 
 ## Called from a player when they finish their hand
 func player_finish_hand(player : int):
-	print("Player " + str(player) + " finished their hand")
 	var node = get_node("Labels/Player" + str(player) + "Rank")
 	match len(finished_players):
 		0:
@@ -214,7 +212,7 @@ func recieve_trade(rank : String, cards : Array):
 	recieved_trades += 1
 	if not recieved_trades == 4:
 		return
-	print(card_trade)
+
 	for i in 4:
 		var player_rank = get_node("Labels/Player" + str(i) + "Rank").text.to_lower()
 		match player_rank:
