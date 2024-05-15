@@ -54,7 +54,8 @@ unique_name_in_owner = true
 [node name="DiscardPile" parent="GameHandler" instance=ExtResource("2_lti3k")]
 
 [node name="Player0" parent="GameHandler" instance=ExtResource("3_pstii")]
-anchor_bottom = 0.98
+anchor_top = 0.775
+anchor_bottom = 0.925
 
 [node name="Player1" parent="GameHandler" instance=ExtResource("4_tcix5")]
 anchors_preset = 6
@@ -96,9 +97,9 @@ scale = Vector2(0.5, 0.5)
 [node name="Buttons" type="HBoxContainer" parent="GameHandler"]
 anchors_preset = -1
 anchor_left = 0.2
-anchor_top = 0.775
+anchor_top = 0.725
 anchor_right = 0.8
-anchor_bottom = 0.775
+anchor_bottom = 0.725
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -161,9 +162,9 @@ visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.9
+anchor_top = 0.85
 anchor_right = 0.5
-anchor_bottom = 0.9
+anchor_bottom = 0.85
 offset_left = -172.5
 offset_top = -126.0
 offset_right = 172.5
@@ -222,9 +223,9 @@ horizontal_alignment = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.75
+anchor_top = 0.725
 anchor_right = 0.5
-anchor_bottom = 0.75
+anchor_bottom = 0.725
 offset_left = -90.5
 offset_top = -138.0
 offset_right = 90.5

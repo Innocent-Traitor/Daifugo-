@@ -1,18 +1,7 @@
 extends Control
 
-
 func _ready():
-	pass
-	#admob.load_banner()
-	#admob.show_banner()
-
-
-# func _on_admob_banner_loaded():
-# 	print("AdMob banner loaded")
-
-# func _on_admob_banner_failed_to_load(error_code:Variant):
-# 	print("AdMob banner failed to load with error code: " + str(error_code))
-
+	AdHandler.load_banner_ad()
 
 func _on_stats_button_pressed():
 	$MainContainer.visible = false

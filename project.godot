@@ -21,6 +21,7 @@ config/icon="res://sprites/Icons/ic_launcher.png"
 [autoload]
 
 GlobalSettings="*res://scripts/global_settings.gd"
+AdHandler="*res://scripts/ad_handler.gd"
 
 [display]
 
@@ -34,7 +35,7 @@ window/handheld/orientation=1
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/admob/plugin.cfg")
 
 [gui]
 
