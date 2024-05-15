@@ -22,6 +22,7 @@ var card_trade = {
 	'hinmin' : [""],
 	'daihinmin' : ["", ""],
 }
+var recieved_trades = 0
 
 
 func _ready():
@@ -209,4 +210,33 @@ func rename_labels():
 		get_node("Labels/Player" + str(i) + "/Player" + str(i) + "Label").text = rank
 
 func recieve_trade(rank : String, cards : Array):
-	print(rank, cards)
+	card_trade[rank] = cards
+	recieved_trades += 1
+	if not recieved_trades == 4:
+		return
+	print(card_trade)
+	for i in 4:
+		var player_rank = get_node("Labels/Player" + str(i) + "Rank").text.to_lower()
+		match player_rank:
+			'daifugo':
+				player_rank = 'daihinmin'
+			'fugo':
+				player_rank = 'hinmin'
+			'hinmin':
+				player_rank = 'fugo'
+			'daihinmin':
+				player_rank = 'daifugo'
+		
+		for trade in card_trade[player_rank]:
+			var player = get_node("Player" + str(i))
+			player.add_card(trade)
+			player.sort_cards()
+
+	card_trade.clear()
+	recieved_trades = 0
+	$Labels/ActionLabel.visible = false
+	new_hand()
+
+		
+		
+

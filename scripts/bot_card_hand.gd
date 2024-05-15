@@ -91,4 +91,17 @@ func discard_cards(discarded_cards):
 		index += 1
 
 func init_trade(rank : String):
-	pass
+	var _trade_cards = []
+	match rank:
+		'daifugo':
+			for i in 2:
+				_trade_cards.append(card_hand.pop_front())
+		'fugo':
+			_trade_cards.append(card_hand.pop_front())
+		'hinmin':
+			_trade_cards.append(card_hand.pop_back())
+		'daihinmin':
+			for i in 2:
+				_trade_cards.append(card_hand.pop_back())
+	
+	trade_cards.emit(rank, _trade_cards)

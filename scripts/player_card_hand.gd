@@ -107,10 +107,8 @@ func _on_discard_button_pressed():
 			return
 		else:
 			emit_signal("trade_cards", round_rank, selected_cards)
-			trading = false
-			return
 
-	if not get_parent().is_valid_discard(selected_cards):
+	if not get_parent().is_valid_discard(selected_cards) and not trading:
 		return
 
 	for card in selected_cards:
@@ -136,13 +134,13 @@ func start_turn():
 
 
 func end_turn():
-	if not selected_cards.is_empty():
+	if not selected_cards.is_empty() and not trading:
 		get_parent().recieve_discard(selected_cards)
 
 	selected_cards = []
 	selected_card_value = 0
 
-	if get_child_count() == 0:
+	if get_child_count() == 0 and not trading:
 		var self_name = self.name.substr(6, 1)
 		get_parent().player_finish_hand(int(self_name))
 
@@ -150,6 +148,7 @@ func end_turn():
 		node.is_valid = false
 		node.modulate = Color(0.5, 0.5, 0.5, 1)
 
+	trading = false
 	get_node("%DiscardButton").disabled = true
 	get_node("%PassButton").disabled = true
 
@@ -173,6 +172,7 @@ func init_trade(rank : String):
 				card.is_valid = false
 				card.modulate = Color(0.5, 0.5, 0.5, 1)
 			node = get_node(selected_cards[0])
+			node.select()
 			node.is_valid = false
 			node.modulate = Color(1, 1, 1, 1)
 
@@ -184,6 +184,7 @@ func init_trade(rank : String):
 				card.modulate = Color(0.5, 0.5, 0.5, 1)
 			for card in selected_cards:
 				node = get_node(card)
+				node.select()
 				node.is_valid = false
 				node.modulate = Color(1, 1, 1, 1)
 		
