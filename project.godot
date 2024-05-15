@@ -16,7 +16,7 @@ run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 boot_splash/image="res://sprites/Menu/MoonsoftLogo.png"
 boot_splash/use_filter=false
-config/icon="res://icon.svg"
+config/icon="res://sprites/Icons/ic_launcher.png"
 
 [autoload]
 
