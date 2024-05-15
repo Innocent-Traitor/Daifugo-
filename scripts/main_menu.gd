@@ -42,7 +42,7 @@ func _on_license_return_button_pressed():
 	$AboutContainer/LicenseContainer.visible = false
 
 func _on_github_button_pressed():
-	OS.shell_open("https://github.com/Innocent-Traitor")
+	OS.shell_open("https://github.com/Innocent-Traitor/Daifugo-")
 
 func _on_discord_button_pressed():
 	OS.shell_open("https://discord.gg/Cv7hBAK65P")
