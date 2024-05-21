@@ -27,12 +27,14 @@ func sort_cards():
 	var sorted_cards = get_children()
 	sorted_cards.sort_custom(func(a, b): return a.card_value < b.card_value)
 
-	# Add jokers to the end | I hope it works properly
-	for i in len(sorted_cards):
-		var card = sorted_cards[i]
+	# Add jokers to the end
+	while true:
+		var card = sorted_cards[0]
 		if card.card_value == -1:
 			sorted_cards.erase(card)
 			sorted_cards.append(card)
+		else:
+			break
 	
 	for node in get_children():
 		remove_child(node)
@@ -83,17 +85,17 @@ func on_card_unselected(card_id):
 ## Find all cards that are able to be discarded and highlight them.
 ## Returns true if there are any valid cards
 func find_valid_cards() -> bool:
-	var has_valid = false
 	for node in get_children():
-		if %GameHandler.is_card_valid(node.card_id):
-			node.is_valid = true
-			node.modulate = Color(1, 1, 1, 1)
-			has_valid = true
-		else:
-			node.is_valid = false
-			node.modulate = Color(0.5, 0.5, 0.5, 1)
+		node.is_valid = false
+		node.modulate = Color(0.5, 0.5, 0.5, 1)
 	
-	return has_valid
+	var current_hand = get_children().filter(func(_card: Node) -> bool: return %GameHandler.is_card_valid(_card.card_id))
+	for card in current_hand:
+		card.is_valid = true
+		card.modulate = Color(1, 1, 1, 1)
+	## TODO: Set this up so it will check to see if you have the proper amount of cards for the value
+
+	return not current_hand.is_empty()
 
 ## Discard all selected cards if they are a valid discard
 func _on_discard_button_pressed():
@@ -192,3 +194,30 @@ func init_trade(rank : String):
 			for card in current_hand:
 				card.is_valid = false
 				card.modulate = Color(0.5, 0.5, 0.5, 1)
+
+func _ready():
+	var objects = [
+		{'value': 1, 'name': 'A'},
+		{'value': 2, 'name': 'B'},
+		{'value': 1, 'name': 'C'},
+		{'value': 3, 'name': 'D'},
+		{'value': 2, 'name': 'E'},
+		{'value': 1, 'name': 'F'},
+	]
+
+	var min_count = 2
+
+	var result = []
+	var groups = {}
+	for obj in objects:
+		var value = obj.value
+		if value in groups:
+			groups[value].append(obj)
+		else:
+			groups[value] = [obj]
+	for group in groups.values():
+		if group.size() >= min_count:
+			result += group
+
+	var unique_result = result.duplicate(true)
+	print(unique_result)

@@ -9,8 +9,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 
 ### Fixed
+- Jokers properly move to the top of the hand
 
 ### Changed
+- Menu Layout Changes
+- (Untracked) Ad Loading Changes
 
 ## [1.0.0] - 2024-05-15
 

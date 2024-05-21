@@ -25,7 +25,8 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0.466667, 0.188235, 1)
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="MainLogo" type="TextureRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -41,6 +42,7 @@ grow_vertical = 2
 texture = ExtResource("2_83qko")
 
 [node name="Title" type="Label" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -62,6 +64,7 @@ text = "Daifugo!"
 horizontal_alignment = 1
 
 [node name="MainContainer" type="VBoxContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -88,19 +91,19 @@ text = "Play Game"
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="StatsButton" type="Button" parent="MainContainer"]
+[node name="SettingsButton" type="Button" parent="MainContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Stats (WIP)"
+text = "Settings (WIP)"
 
 [node name="Spacer2" type="Control" parent="MainContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="SettingsButton" type="Button" parent="MainContainer"]
+[node name="StatsButton" type="Button" parent="MainContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Settings (WIP)"
+text = "Stats (WIP)"
 
 [node name="Spacer3" type="Control" parent="MainContainer"]
 layout_mode = 2
@@ -328,7 +331,6 @@ layout_mode = 2
 text = "Reset Score"
 
 [node name="SettingsContainer" type="PanelContainer" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.05
@@ -443,6 +445,10 @@ text = "    General Settings "
 [node name="SettingsReturn" type="Button" parent="SettingsContainer/VBoxContainer"]
 layout_mode = 2
 text = "Return"
+
+[node name="Spacer" type="Control" parent="SettingsContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
 
 [node name="AboutContainer" type="PanelContainer" parent="."]
 visible = false
@@ -657,10 +663,11 @@ custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
 [connection signal="pressed" from="MainContainer/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="MainContainer/StatsButton" to="." method="_on_stats_button_pressed"]
 [connection signal="pressed" from="MainContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="MainContainer/StatsButton" to="." method="_on_stats_button_pressed"]
 [connection signal="pressed" from="MainContainer/AboutButton" to="." method="_on_about_button_pressed"]
 [connection signal="pressed" from="StatsContainer/VBoxContainer/StatsReturnButton" to="." method="_on_stats_return_button_pressed"]
+[connection signal="pressed" from="SettingsContainer/VBoxContainer/SettingsReturn" to="." method="_on_settings_return_pressed"]
 [connection signal="pressed" from="AboutContainer/MainContainer/DiscordContainer/DiscordButton" to="." method="_on_discord_button_pressed"]
 [connection signal="pressed" from="AboutContainer/MainContainer/GithubContainer/GithubButton" to="." method="_on_github_button_pressed"]
 [connection signal="pressed" from="AboutContainer/MainContainer/LicenseButton" to="." method="_on_license_button_pressed"]

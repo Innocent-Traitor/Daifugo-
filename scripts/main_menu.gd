@@ -3,24 +3,32 @@ extends Control
 func _ready():
 	AdHandler.load_banner_ad()
 
+## Stats
 func _on_stats_button_pressed():
-	$MainContainer.visible = false
+	toggle_main_menu_visibility()
 	$StatsContainer.visible = true
 
 func _on_stats_return_button_pressed():
-	$MainContainer.visible = true
+	toggle_main_menu_visibility()
 	$StatsContainer.visible = false
 
+## Settings
 func _on_settings_button_pressed():
-	pass # Replace with function body.
+	toggle_main_menu_visibility()
+	$SettingsContainer.visible = true
 
+func _on_settings_return_pressed():
+	toggle_main_menu_visibility()
+	$SettingsContainer.visible = false
+
+## About
 func _on_about_button_pressed():
-	$MainContainer.visible = false
+	toggle_main_menu_visibility()
 	$AboutContainer.visible = true
 	
 func _on_about_return_button_pressed():
+	toggle_main_menu_visibility()
 	$AboutContainer.visible = false
-	$MainContainer.visible = true
 
 func _on_license_button_pressed():
 	$AboutContainer/MainContainer.visible = false
@@ -41,3 +49,16 @@ func _on_privacy_button_pressed():
 
 func _on_play_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/main_scene.tscn")
+
+func toggle_main_menu_visibility() -> void:
+	if $MainContainer.visible:
+		$MainContainer.visible = false
+		$Title.visible = false
+		$MainLogo.visible = false
+	else:
+		$MainContainer.visible = true
+		$Title.visible = true
+		$MainLogo.visible = true
+
+
+
