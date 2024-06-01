@@ -27,8 +27,14 @@ func sort_cards():
 ## FIXME: This shit fucking sucks
 func find_most_common_card(hand: Array) -> Array:
 	var card_count = {}
-	var needed_discard = len(get_parent().current_discard)
+	var needed_discard
+	# Figure out how many cards we need to do discard
+	if (get_parent().current_discard == [""]):
+		needed_discard = 0
+	else:
+		needed_discard = len(get_parent().current_discard)
 
+	# Count the cards, grouping ones that have the same value
 	for card in hand:
 		var card_value = get_parent().get_card_info(card).value
 		if card_value <= get_parent().discard_value:
@@ -39,6 +45,7 @@ func find_most_common_card(hand: Array) -> Array:
 			else:
 				card_count[card_value] = 1
 
+	# Find which counts are equal or more than the needed amount of discarded cards
 	var good_count = {}
 	for count in card_count:
 		if card_count[count] >= needed_discard:
@@ -46,20 +53,27 @@ func find_most_common_card(hand: Array) -> Array:
 	
 	var most_common_card
 	var max_count = 0
-
+	# Find the most common card with the lowest value
 	for card in good_count:
 		var count = card_count[card]
 		if count > max_count:
 			max_count = count
 			most_common_card = card
 	
+	# Get the cards with the value we want from the hand array
 	var arr = hand.filter(func (card: String) -> bool: 
 		return get_parent().get_card_info(card).value == most_common_card
 	)
 
-	for i in (len(arr) - needed_discard):
+	# This is if the bot is starting the turn, go ahead and get rid of the most cards you can
+	if needed_discard == 0:
+		return arr
+
+	# if we have more cards than needed, get rid of ones until we have the right amount
+	while (len(arr) > needed_discard):
 		arr.pop_front()
 
+	# if for some reason we don't have the right amount, return an empty array
 	if not len(arr) == needed_discard:
 		return []
 
