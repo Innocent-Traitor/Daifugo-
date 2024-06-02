@@ -25,3 +25,4 @@ Miyako Ochi - If the Daifugo does not win the hand, they will automatically be d
 Bugs:
 If 2 or more cards are played together, and it becomes the players turn, it will highlight cards of higher ranking, even if you don't have enough to play that card
 AI does not try to play as many of the same card if they are starting the turn
+Build instructions needs to be updated
