@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 - Jokers properly move to the top of the hand
+- Bots have improved choices when starting a new round
 
 ### Changed
 - Menu Layout Changes

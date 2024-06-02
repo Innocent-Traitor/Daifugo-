@@ -9,6 +9,7 @@ var global_settings = {
 }
 
 var game_rules = {
+	'3_spades' = false,
 	'5_skip' = false,
 	'8_ender' = false,
 

@@ -16,6 +16,7 @@ This project was started due to the lack of english translated version of daifug
 - [ ] - Forbidden Last Card
 - [ ] - Sequence
 - [ ] - Miyako Ochi
+- [ ] - Revolution
 
 ### QoL
 - [ ] - Stats
