@@ -528,6 +528,42 @@ popup/item_2/text = "Joker"
 popup/item_2/checkable = 1
 popup/item_2/id = 2
 
+[node name="SequenceContainer" type="HBoxContainer" parent="SettingsContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SequenceLabel" type="Label" parent="SettingsContainer/VBoxContainer/ScrollContainer/VBoxContainer/SequenceContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Sequence"
+
+[node name="SequenceOption" type="CheckBox" parent="SettingsContainer/VBoxContainer/ScrollContainer/VBoxContainer/SequenceContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="MiyakoContainer" type="HBoxContainer" parent="SettingsContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MiyakoLabel" type="Label" parent="SettingsContainer/VBoxContainer/ScrollContainer/VBoxContainer/MiyakoContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Miyako Ochi"
+
+[node name="MiyakoOption" type="CheckBox" parent="SettingsContainer/VBoxContainer/ScrollContainer/VBoxContainer/MiyakoContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="RevolutionContainer" type="HBoxContainer" parent="SettingsContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="RevolutionLabel" type="Label" parent="SettingsContainer/VBoxContainer/ScrollContainer/VBoxContainer/RevolutionContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Revolution"
+
+[node name="RevolutionOption" type="CheckBox" parent="SettingsContainer/VBoxContainer/ScrollContainer/VBoxContainer/RevolutionContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
 [node name="SettingsReturn" type="Button" parent="SettingsContainer/VBoxContainer"]
 layout_mode = 2
 text = "Return"
@@ -760,6 +796,9 @@ layout_mode = 2
 [connection signal="toggled" from="SettingsContainer/VBoxContainer/ScrollContainer/VBoxContainer/5SkipContainer/5SkipOption" to="SettingsContainer" method="_on_skip_option_toggled"]
 [connection signal="toggled" from="SettingsContainer/VBoxContainer/ScrollContainer/VBoxContainer/8EnderContainer/8EnderOption" to="SettingsContainer" method="_on_ender_option_toggled"]
 [connection signal="item_selected" from="SettingsContainer/VBoxContainer/ScrollContainer/VBoxContainer/RoundStartContainer/RoundStartOption" to="SettingsContainer" method="_on_round_start_option_item_selected"]
+[connection signal="toggled" from="SettingsContainer/VBoxContainer/ScrollContainer/VBoxContainer/SequenceContainer/SequenceOption" to="SettingsContainer" method="_on_sequence_option_toggled"]
+[connection signal="toggled" from="SettingsContainer/VBoxContainer/ScrollContainer/VBoxContainer/MiyakoContainer/MiyakoOption" to="SettingsContainer" method="_on_miyako_option_toggled"]
+[connection signal="toggled" from="SettingsContainer/VBoxContainer/ScrollContainer/VBoxContainer/RevolutionContainer/RevolutionOption" to="SettingsContainer" method="_on_revolution_option_toggled"]
 [connection signal="pressed" from="SettingsContainer/VBoxContainer/SettingsReturn" to="." method="_on_settings_return_pressed"]
 [connection signal="pressed" from="AboutContainer/MainContainer/DiscordContainer/DiscordButton" to="." method="_on_discord_button_pressed"]
 [connection signal="pressed" from="AboutContainer/MainContainer/GithubContainer/GithubButton" to="." method="_on_github_button_pressed"]

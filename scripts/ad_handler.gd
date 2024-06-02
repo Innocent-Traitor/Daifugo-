@@ -1,14 +1,17 @@
 extends Node
 class_name Ad_Handler
 
-
-var banner_id : String = "ca-app-pub-3940256099942544/6300978111"
-
 var _ad_view : AdView
+var banner_id : String
 
 func _ready() -> void:
 	MobileAds.initialize()
 	print('MobileAds initialized')
+	## Test ID ca-app-pub-3940256099942544/6300978111 | Real ID 
+	if OS.is_debug_build():
+		banner_id = "ca-app-pub-3940256099942544/6300978111"
+	else:
+		banner_id = ""
 
 func load_banner_ad() -> void:
 	if _ad_view == null:
