@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bm2on7nhymh6a"]
 
-[ext_resource type="Script" path="res://scripts/dealer.gd" id="1_ivrym"]
+[ext_resource type="Script" path="res://scripts/gameplay/dealer.gd" id="1_ivrym"]
 
 [node name="Dealer" type="Node"]
 script = ExtResource("1_ivrym")

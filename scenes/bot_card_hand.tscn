@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://vv61fl6h6a1m"]
 
-[ext_resource type="Script" path="res://scripts/bot_card_hand.gd" id="1_fx6tg"]
+[ext_resource type="Script" path="res://scripts/gameplay/bot_card_hand.gd" id="1_fx6tg"]
 
 [node name="BotCardHand" type="HBoxContainer"]
 offset_right = 720.0

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dkajx7tmty2jj"]
 
-[ext_resource type="Script" path="res://scripts/player_card_hand.gd" id="1_nfwu4"]
+[ext_resource type="Script" path="res://scripts/gameplay/player_card_hand.gd" id="1_nfwu4"]
 
 [node name="PlayerCardHand" type="HBoxContainer"]
 anchors_preset = -1

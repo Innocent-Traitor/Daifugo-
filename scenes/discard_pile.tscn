@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ckqnp7njam2lm"]
 
-[ext_resource type="Script" path="res://scripts/discard_pile.gd" id="1_1asox"]
+[ext_resource type="Script" path="res://scripts/gameplay/discard_pile.gd" id="1_1asox"]
 
 [node name="DiscardPile" type="HBoxContainer"]
 anchors_preset = -1

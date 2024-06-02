@@ -6,9 +6,6 @@ AI Players - Has decks in which they will also play
 
 Card Sort - Spade, Club, Diamond, Heart
 
-AI Logic (for now): Pick the greatest amount of the same lowest value card and then play it
-
-
 Settings -
 Terms Language (In-game terms to be used, japanese to english) (Daifugo, Fugo, Heimen, Hinmen, Daihinmin = President, Vice-President, Citizen, Poor, Begger)
 Auto Pass (Automatically pass if you have no valid cards to play)
@@ -34,3 +31,10 @@ You toggle the rules in the settings menu. In the game handler, there is a funct
 
 
 Build instructions needs to be updated
+
+
+3 Main things to save:
+ - Settings - This can be loaded at the launch of app, and saved when closing the settings menu
+ - Stats - This can be loaded when opening the stats menu, and saved at the end of every round
+ - Current Game - Loaded when continuing into a game at app startup, and saved when exiting the main scene for any reason (Close Game, Minimize Game, go to main menu)
+https://docs.godotengine.org/en/stable/classes/class_mainloop.html - For Noticiations when game is paused or unpaused in Android

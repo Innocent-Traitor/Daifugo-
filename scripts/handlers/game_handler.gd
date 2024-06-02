@@ -24,9 +24,12 @@ var card_trade = {
 }
 var recieved_trades = 0
 
+## Current set of rules in play
+var current_rules = []
 
 func _ready():
 	new_round()
+	get_current_rules()
 
 ## Set up for a new round
 func new_round():
@@ -235,6 +238,12 @@ func recieve_trade(rank : String, cards : Array):
 	$Labels/ActionLabel.visible = false
 	new_hand()
 
-		
-		
+## Gets all currently selected rules from the player set ruleset
+func get_current_rules() -> void:	
+	for rule in GlobalSettings.game_rules:
+		if GlobalSettings.game_rules[rule]:
+			match rule:
+				'8_ender':
+					current_rules.append(Ender.new())
+
 
