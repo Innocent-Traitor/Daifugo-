@@ -506,6 +506,28 @@ popup/item_4/id = 4
 popup/item_5/text = "Daifugo"
 popup/item_5/id = 5
 
+[node name="ForbiddenContainer" type="HBoxContainer" parent="SettingsContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ForbiddenLabel" type="Label" parent="SettingsContainer/VBoxContainer/ScrollContainer/VBoxContainer/ForbiddenContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Forbidden Last Card"
+
+[node name="ForbiddenOption" type="MenuButton" parent="SettingsContainer/VBoxContainer/ScrollContainer/VBoxContainer/ForbiddenContainer"]
+layout_mode = 2
+text = "Tap to change"
+item_count = 3
+popup/item_0/text = "3 of Spades"
+popup/item_0/checkable = 1
+popup/item_0/id = 0
+popup/item_1/text = "2 Card"
+popup/item_1/checkable = 1
+popup/item_1/id = 1
+popup/item_2/text = "Joker"
+popup/item_2/checkable = 1
+popup/item_2/id = 2
+
 [node name="SettingsReturn" type="Button" parent="SettingsContainer/VBoxContainer"]
 layout_mode = 2
 text = "Return"

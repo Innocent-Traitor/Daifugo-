@@ -12,9 +12,13 @@ var game_rules = {
 	'3_spades' = false,
 	'5_skip' = false,
 	'8_ender' = false,
-
 	'first_play' = 'daihinmin',
-	'forbidden_last' = [],
+	'forbidden_last' = {
+		'3_spades' = false,
+		'2_card' = false,
+		'joker' = false,
+	},
 	'sequence' = false,
-	'miyako_ochi' = false
+	'miyako_ochi' = false,
+	'revolution' = false,
 }
