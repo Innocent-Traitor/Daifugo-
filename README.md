@@ -4,13 +4,13 @@
 
 [Daifugo](https://en.wikipedia.org/wiki/Daifugo) is a japanese card game that includes getting rid of all the cards in your hand to become the Daifugo! If you don't get rid of them, you risk becoming the Daihinmin and giving your best cards to the Daifugo next round. Keep playing with all sorts of different rules and have fun!
 
-This project was started due to the lack of english translated version of daifugo on the android app store. There are quite a few avaiable, but only 1 that I've found in english. Sadly, it is only supported by what looks like one developer that redid the framework which ended up completely breaking it. So I decided to create my own version. This version is lacking a lot of the rulesets, but I first want to create the ruleset that I am used to first before I start adding rules I don't know about. Eventually, I want to have a completely customizable ruleset that the player can change however they'd like. Later in the README you can see my current progress on add rules, and other features I want to add.
+This project was started due to the lack of english translated version of daifugo on the android app store. There are quite a few avaiable, but only one that I've found in english. Sadly, it is only supported by what looks like one developer that redid the framework which ended up completely breaking it. So I decided to create my own version. This version is lacking a lot of the rulesets, but I first want to create the ruleset that I am used to first before I start adding rules I don't know about. Eventually, I want to have a completely customizable ruleset that the player can change however they'd like. Later in the README you can see my current progress on add rules, and other features I want to add.
 
 ## Roadmap
 
 ### Rules
 - [ ] - 5 Skip
-- [ ] - 8 Ender
+- [x] - 8 Ender
 - [ ] - 3 of Spades Pay Back
 - [ ] - First Play
 - [ ] - Forbidden Last Card

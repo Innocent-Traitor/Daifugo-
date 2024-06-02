@@ -13,7 +13,7 @@ Auto Pass (Automatically pass if you have no valid cards to play)
 Game Rules -
 3 of Spades Pay Back - If a single joker is played, a 3 of spades can be played over the Joker
 5 Skip - Skips the next player(s) if a 5 is played
-8 Ender - Immediately end the hand if a 8 is played
+8 Ender - Immediately end the hand if a 8 is played - DONE
 First Play - Who starts the hand? (Daihinmin, Daifugo, 3 of Spades, etc.)
 Forbidden Last Card - Players not allowed to go out on this card (2, Joker, Pair, 8, etc.)
 Sequence - Three or more cards in a sequence (ex. 3-4-5, 6-7-8, etc.)

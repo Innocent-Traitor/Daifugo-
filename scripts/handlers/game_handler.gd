@@ -1,5 +1,7 @@
 extends Node
 
+@onready var action_label = $Labels/ActionLabel
+
 var round_number = 0
 
 ## Whose turn is it right now?
@@ -40,9 +42,7 @@ func new_round():
 	$Player1.card_hand = []
 	$Player2.card_hand = []
 	$Player3.card_hand = []
-	pass_count = 0
-	current_discard = [""]
-	discard_value = 1
+	reset_discard()
 	finished_players = []
 		
 	if round_number == 0:
@@ -56,18 +56,20 @@ func new_round():
 	round_number += 1
 
 func handle_trade():
-	$Labels/ActionLabel.text = "Select cards to trade"
-	$Labels/ActionLabel.visible = true
+	display_action_label("Select cards to trade")
 	for i in 4:
 		var rank = get_node("Labels/Player" + str(i) + "/Player" + str(i) + "Label").text
 		get_node("Player" + str(i)).init_trade(rank.to_lower())
 
-## Set up for a new hand
-func new_hand():
+func reset_discard():
 	pass_count = 0
 	current_discard = [""]
 	discard_value = 1
 	$DiscardPile.reset_discard()
+
+## Set up for a new hand
+func new_hand():
+	reset_discard()
 	rotate_turn()
 	
 ## Deal cards to all players
@@ -106,14 +108,23 @@ func is_valid_discard(cards: Array) -> bool:
 
 ## When a player has discarded a hand
 func recieve_discard(cards : Array):
+	# Update discard pile
+	current_discard = cards
+	$DiscardPile.update_discard(current_discard)
+	pass_count = 0
+
+	# Run the ruleset checks
+	for rule in current_rules:
+		if rule._check_rule(cards):
+			rule._do_rule()
+			return
+
+	# If it's all jokers, set the discard value to 16 and then rotate turn
 	var card = get_card_info(cards[0])
 	if cards.all(func(_card: String) -> bool: return _card == "JR" or _card == "JB"):
 		discard_value = 16
 	else:
 		discard_value = card.value
-	current_discard = cards
-	$DiscardPile.update_discard(current_discard)
-	pass_count = 0
 	call_deferred("rotate_turn")
 
 ## When a player passes their turn
@@ -235,7 +246,7 @@ func recieve_trade(rank : String, cards : Array):
 
 	card_trade.clear()
 	recieved_trades = 0
-	$Labels/ActionLabel.visible = false
+	action_label.visible = false
 	new_hand()
 
 ## Gets all currently selected rules from the player set ruleset
@@ -244,6 +255,11 @@ func get_current_rules() -> void:
 		if GlobalSettings.game_rules[rule]:
 			match rule:
 				'8_ender':
-					current_rules.append(Ender.new())
+					current_rules.append(Ender.new(self))
+
+
+func display_action_label(text : String) -> void:
+	action_label.text = text
+	action_label.visible = true
 
 

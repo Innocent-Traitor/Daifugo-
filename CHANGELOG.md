@@ -7,7 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [UNRELEASED]
 
 ### Added
-- Currently planned rules are listed in the settings menu (Rules are not implemented yet)
+- Adjustable rules in the settings menu
+- 8 Ender rule added
 
 ### Fixed
 - Jokers properly move to the top of the hand

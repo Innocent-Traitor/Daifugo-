@@ -195,7 +195,7 @@ func init_trade(rank : String):
 				card.is_valid = false
 				card.modulate = Color(0.5, 0.5, 0.5, 1)
 
-func _ready():
+func _ready(): # This is a prototype of finding same value cards in groups
 	var objects = [
 		{'value': 1, 'name': 'A'},
 		{'value': 2, 'name': 'B'},

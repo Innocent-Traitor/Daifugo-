@@ -141,7 +141,6 @@ text = "Pass"
 horizontal_alignment = 1
 
 [node name="ActionLabel" type="Label" parent="GameHandler/Labels"]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -156,6 +155,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_type_variation = &"HeaderLabel"
 text = "Miyako Ochi"
+horizontal_alignment = 1
 
 [node name="Player0Rank" type="Label" parent="GameHandler/Labels"]
 visible = false
