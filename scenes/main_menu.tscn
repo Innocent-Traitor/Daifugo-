@@ -92,22 +92,26 @@ size_flags_vertical = 3
 [node name="SettingsButton" type="Button" parent="MainContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Settings (WIP)"
+text = "Settings"
 
 [node name="Spacer2" type="Control" parent="MainContainer"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="StatsButton" type="Button" parent="MainContainer"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 text = "Stats (WIP)"
 
 [node name="Spacer3" type="Control" parent="MainContainer"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="HowToButton" type="Button" parent="MainContainer"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 text = "How to Play (WIP)"
