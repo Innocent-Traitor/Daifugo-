@@ -20,7 +20,7 @@ This project was started due to the lack of english translated version of daifug
 
 ### QoL
 - [ ] - Stats
-- [ ] - Saves game
+- [ ] - Saves game (Currently only saves settings that are implemented)
 - [ ] - In-game sounds
 - [ ] - Customizable Cards
 - [ ] - Change term language (Daifugo = President)

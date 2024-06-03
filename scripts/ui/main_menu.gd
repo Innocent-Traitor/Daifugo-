@@ -2,6 +2,7 @@ extends Control
 
 func _ready():
 	AdHandler.load_banner_ad()
+	SaveLoadHandler.load_game_settings()
 
 ## Stats
 func _on_stats_button_pressed():
@@ -18,6 +19,7 @@ func _on_settings_button_pressed():
 	$SettingsContainer.visible = true
 
 func _on_settings_return_pressed():
+	SaveLoadHandler.save_game_settings()
 	toggle_main_menu_visibility()
 	$SettingsContainer.visible = false
 

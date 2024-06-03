@@ -65,3 +65,15 @@ func _on_miyako_option_toggled(toggled_on:bool):
 func _on_revolution_option_toggled(toggled_on:bool):
 	GlobalSettings.game_rules['revolution'] = toggled_on
 #endregion
+
+func apply_settings_from_save() -> void:
+	# Language
+	# Terms
+	#autopass_option.button_pressed = GlobalSettings.global_settings['auto_pass']
+	# Game Speed
+
+	#spades_option.button_pressed = GlobalSettings.game_rules['3_spades']
+	#skip_option.button_pressed = GlobalSettings.game_rules['5_skip']
+	ender_option.button_pressed = GlobalSettings.game_rules['8_ender']
+	# Round Start
+	# Forbidden Last

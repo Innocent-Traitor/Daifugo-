@@ -22,6 +22,7 @@ config/icon="res://sprites/Icons/ic_launcher.png"
 
 GlobalSettings="*res://scripts/handlers/global_settings.gd"
 AdHandler="*res://scripts/handlers/ad_handler.gd"
+SaveLoadHandler="*res://scripts/handlers/save_load_handler.gd"
 
 [display]
 
@@ -35,7 +36,7 @@ window/handheld/orientation=1
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/admob/plugin.cfg")
+enabled=PackedStringArray("res://addons/admob/plugin.cfg", "res://addons/safe_resource_loader/plugin.cfg")
 
 [gui]
 
