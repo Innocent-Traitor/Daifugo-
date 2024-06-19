@@ -116,7 +116,7 @@ func recieve_discard(cards : Array):
 	# Run the ruleset checks
 	for rule in current_rules:
 		if rule._check_rule(cards):
-			rule._do_rule()
+			rule._do_rule(cards)
 			return
 
 	# If it's all jokers, set the discard value to 16 and then rotate turn
@@ -256,7 +256,8 @@ func get_current_rules() -> void:
 			match rule:
 				'8_ender':
 					current_rules.append(Ender.new(self))
-
+				'5_skip':
+					current_rules.append(Skip.new(self))
 
 func display_action_label(text : String) -> void:
 	action_label.text = text

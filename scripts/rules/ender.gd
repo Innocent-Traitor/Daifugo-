@@ -12,7 +12,7 @@ func _check_rule(cards : Array) -> bool:
 	else:
 		return false
 
-func _do_rule() -> void:
+func _do_rule(_cards) -> void:
 	game_handler.display_action_label("8 Ender")
 	await game_handler.get_tree().create_timer(1).timeout
 	game_handler.pass_count = 0
