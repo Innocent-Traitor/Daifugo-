@@ -25,7 +25,7 @@ func _do_rule(_cards) -> void:
 		gm.call_deferred("rotate_turn")
 		return
 	if (gm.get_node("Player" + str(gm.turn_order)).get_children().is_empty() 
-	or gm.get_node("Player" + str(gm.turn_order)).card_hand == 0):
+	or gm.get_node("Player" + str(gm.turn_order)).card_hand.is_empty()):
 		gm.call_deferred("rotate_turn")
 		return
 	gm.get_node("Player" + str(gm.turn_order)).start_turn()

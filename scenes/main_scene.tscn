@@ -172,7 +172,7 @@ offset_right = 172.5
 grow_horizontal = 2
 grow_vertical = 0
 theme_type_variation = &"HeaderLabel"
-text = "Daifugo"
+text = "Undefined"
 horizontal_alignment = 1
 
 [node name="Player1Rank" type="Label" parent="GameHandler/Labels"]
@@ -187,7 +187,7 @@ offset_left = -179.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -1.5708
-text = "Daifugo"
+text = "Undefined"
 horizontal_alignment = 1
 
 [node name="Player2Rank" type="Label" parent="GameHandler/Labels"]
@@ -202,7 +202,7 @@ offset_left = -89.5
 offset_right = 89.5
 offset_bottom = 67.0
 grow_horizontal = 2
-text = "Daifugo"
+text = "Undefined"
 horizontal_alignment = 1
 
 [node name="Player3Rank" type="Label" parent="GameHandler/Labels"]
@@ -217,7 +217,7 @@ offset_right = 358.0
 offset_bottom = 50.0
 grow_vertical = 2
 rotation = 1.5708
-text = "Daifugo"
+text = "Undefined"
 horizontal_alignment = 1
 
 [node name="Player0" type="VBoxContainer" parent="GameHandler/Labels"]

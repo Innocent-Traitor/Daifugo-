@@ -175,7 +175,12 @@ func is_card_valid(card_id) -> bool:
 ## Called from a player when they finish their hand
 func player_finish_hand(player : int):
 	if miyako_ochi:
-		print(miyako_ochi._check_rule([]))
+		if miyako_ochi._check_rule([]):
+			miyako_ochi._do_rule([])
+			return
+		
+		# After the rule is triggered and the next player becomes Fugo
+		# Check to see if we have a Daihinmin 
 
 	var node = get_node("Labels/Player" + str(player) + "Rank")
 	match len(finished_players):
@@ -230,8 +235,9 @@ func get_card_info(card_id) -> Dictionary:
 
 func rename_labels():
 	for i in 4:
-		var rank = get_node("Labels/Player" + str(i) + "Rank").text
-		get_node("Labels/Player" + str(i) + "/Player" + str(i) + "Label").text = rank
+		var rank = get_node("Labels/Player" + str(i) + "Rank")
+		get_node("Labels/Player" + str(i) + "/Player" + str(i) + "Label").text = rank.text
+		rank.text = "Undefined"
 
 func recieve_trade(rank : String, cards : Array):
 	card_trade[rank] = cards
@@ -240,7 +246,7 @@ func recieve_trade(rank : String, cards : Array):
 		return
 
 	for i in 4:
-		var player_rank = get_node("Labels/Player" + str(i) + "Rank").text.to_lower()
+		var player_rank = get_node("Labels/Player" + str(i) + "/Player" + str(i) + "Label").text.to_lower()
 		match player_rank:
 			'daifugo':
 				player_rank = 'daihinmin'

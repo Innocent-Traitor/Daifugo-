@@ -8,6 +8,8 @@ var selected_card_value = 0
 var trading = false
 var round_rank = 'heimen'
 
+var card_hand = ['x']
+
 ## Signal to the game handler that we are trading
 signal trade_cards(rank : String, cards : Array)
 

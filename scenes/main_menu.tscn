@@ -442,6 +442,7 @@ popup/item_3/text = "Slow"
 popup/item_3/id = 3
 
 [node name="PlayersContainer" type="HBoxContainer" parent="SettingsContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="PlayersLabel" type="Label" parent="SettingsContainer/VBoxContainer/ScrollContainer/VBoxContainer/PlayersContainer"]
@@ -564,6 +565,7 @@ custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 
 [node name="MiyakoContainer" type="HBoxContainer" parent="SettingsContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="MiyakoLabel" type="Label" parent="SettingsContainer/VBoxContainer/ScrollContainer/VBoxContainer/MiyakoContainer"]
@@ -829,6 +831,17 @@ text = "Return to Menu"
 [node name="Spacer2" type="Control" parent="AboutContainer/LicenseContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+
+[node name="VersionLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.975
+anchor_top = 0.015
+anchor_right = 0.975
+anchor_bottom = 0.015
+offset_left = -40.0
+offset_bottom = 67.0
+grow_horizontal = 0
 
 [connection signal="pressed" from="MainContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MainContainer/SettingsButton" to="." method="_on_settings_button_pressed"]

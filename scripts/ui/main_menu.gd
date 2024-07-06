@@ -3,6 +3,7 @@ extends Control
 func _ready():
 	AdHandler.load_banner_ad()
 	SaveLoadHandler.load_game_settings()
+	$VersionLabel.text = "v" + ProjectSettings.get_setting("application/config/version")
 
 ## Stats
 func _on_stats_button_pressed():
