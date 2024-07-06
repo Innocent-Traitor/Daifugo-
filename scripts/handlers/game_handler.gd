@@ -28,6 +28,7 @@ var recieved_trades = 0
 
 ## Current set of rules in play
 var current_rules = []
+var miyako_ochi
 
 func _ready():
 	new_round()
@@ -173,6 +174,9 @@ func is_card_valid(card_id) -> bool:
 
 ## Called from a player when they finish their hand
 func player_finish_hand(player : int):
+	if miyako_ochi:
+		print(miyako_ochi._check_rule([]))
+
 	var node = get_node("Labels/Player" + str(player) + "Rank")
 	match len(finished_players):
 		0:
@@ -266,6 +270,8 @@ func get_current_rules() -> void:
 					current_rules.append(Ender.new(self))
 				'5_skip':
 					current_rules.append(Skip.new(self))
+				'miyako_ochi':
+					miyako_ochi = MiyakoOchi.new(self)
 
 func display_action_label(text : String) -> void:
 	action_label.text = text
