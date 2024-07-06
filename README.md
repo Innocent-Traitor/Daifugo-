@@ -9,7 +9,7 @@ This project was started due to the lack of english translated version of daifug
 ## Roadmap
 
 ### Rules
-- [ ] - 5 Skip
+- [x] - 5 Skip
 - [x] - 8 Ender
 - [ ] - 3 of Spades Pay Back
 - [ ] - First Play
@@ -47,4 +47,5 @@ Discord: [innocent_traitor](https://discord.gg/vGB9EEqNHF)
 1. Download the project, and open in at least Godot v4.2
 2. Follow [Exporting for Android](https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_android.html) on the Godot Documentation
 3. Follow [Gradle Builds for Android](https://docs.godotengine.org/en/stable/tutorials/export/android_gradle_build.html) on the Godot Documentation
-4. Build and Export using Godot's export system
+4. If you'd like to disable Ads on mobile, simply disable ad_handler.gd from the autoload singletons and turn off the Poing Studios Admob plugin.
+5. Build and Export using Godot's export system
