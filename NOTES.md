@@ -22,8 +22,6 @@ Revolution - If 4 of the same valued cards are played, the value of cards are re
 
 Bugs:
 If 2 or more cards are played together, and it becomes the players turn, it will highlight cards of higher ranking, even if you don't have enough to play that card - Might have to use something similar to the algorithm the bots use to find cards that they can play (it's gonna suck)
-If a player has finished the game, it does not properly adjust the passing order
-If the game ends on a rule card (5 skip, 8 ender), it will not work
 Fix icon sizing for the settings - 64x64
 
 

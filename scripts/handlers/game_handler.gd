@@ -135,10 +135,18 @@ func recieve_pass():
 
 	pass_count += 1
 	# If 3 passes in a row, start a new hand TODO: Set this up for different amount of players
-	if pass_count == 3 - len(finished_players):
+	if pass_count >= 3:
 		new_hand()
 		return
 
+	call_deferred("rotate_turn")
+
+## Used to force a pass silently for logic purposes
+func silent_pass():
+	pass_count += 1
+	if pass_count >= 3:
+		new_hand()
+		return
 	call_deferred("rotate_turn")
 
 ## Start the next player's turn
@@ -150,7 +158,7 @@ func rotate_turn():
 	get_node("Labels/Player" + str(turn_order) + "/Player" + str(turn_order) + "Name").theme_type_variation = ""
 	turn_order = (turn_order + 1) % 4
 	if turn_order in finished_players:
-		rotate_turn()
+		silent_pass()
 		return
 		
 	get_node("Player" + str(turn_order)).start_turn()

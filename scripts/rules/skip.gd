@@ -17,9 +17,15 @@ func _do_rule(cards) -> void:
 	await gm.get_tree().create_timer(1).timeout
 	gm.action_label.visible = false
 	gm.discard_value = 5
+	# If the round ends, then don't do anything else
+	if gm.turn_order == -1:
+		gm.call_deferred("rotate_turn")
+		return
+	
 	gm.get_node("Labels/Player" + str(gm.turn_order) + "/Player" + str(gm.turn_order) + "Name").theme_type_variation = ""
 	gm.turn_order = (gm.turn_order + 1) % 4
 	await gm.get_tree().create_timer(0.25).timeout
+	
 	for i in len(cards):
 		gm.get_node("Labels/Player" + str(gm.turn_order) + "/Player" + str(gm.turn_order) + "Name").theme_type_variation = ""
 		gm.get_node("Labels/PassLabel").visible = true
