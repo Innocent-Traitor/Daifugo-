@@ -441,6 +441,21 @@ popup/item_2/id = 2
 popup/item_3/text = "Slow"
 popup/item_3/id = 3
 
+[node name="PlayersContainer" type="HBoxContainer" parent="SettingsContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PlayersLabel" type="Label" parent="SettingsContainer/VBoxContainer/ScrollContainer/VBoxContainer/PlayersContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Number of Players"
+
+[node name="PlayersOption" type="SpinBox" parent="SettingsContainer/VBoxContainer/ScrollContainer/VBoxContainer/PlayersContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+min_value = 2.0
+max_value = 8.0
+value = 4.0
+
 [node name="HSeparator2" type="HSeparator" parent="SettingsContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
