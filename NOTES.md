@@ -9,11 +9,10 @@ Card Sort - Spade, Club, Diamond, Heart
 Settings -
 Terms Language (In-game terms to be used, japanese to english) (Daifugo, Fugo, Heimen, Hinmen, Daihinmin = President, Vice-President, Citizen, Poor, Begger)
 Auto Pass (Automatically pass if you have no valid cards to play)
+Round Skip - Once the player has discarded all their cards, they can have the AI finish the round quickly
 
 Game Rules -
 3 of Spades Pay Back - If a single joker is played, a 3 of spades can be played over the Joker
-5 Skip - Skips the next player(s) if a 5 is played
-8 Ender - Immediately end the hand if a 8 is played - DONE
 First Play - Who starts the hand? (Daihinmin, Daifugo, 3 of Spades, etc.)
 Forbidden Last Card - Players not allowed to go out on this card (2, Joker, Pair, 8, etc.)
 Sequence - Three or more cards in a sequence (ex. 3-4-5, 6-7-8, etc.)
@@ -24,6 +23,7 @@ Revolution - If 4 of the same valued cards are played, the value of cards are re
 Bugs:
 If 2 or more cards are played together, and it becomes the players turn, it will highlight cards of higher ranking, even if you don't have enough to play that card - Might have to use something similar to the algorithm the bots use to find cards that they can play (it's gonna suck)
 If a player has finished the game, it does not properly adjust the passing order
+If the game ends on a rule card (5 skip, 8 ender), it will not work
 
 
 Rules:

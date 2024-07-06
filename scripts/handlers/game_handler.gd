@@ -263,4 +263,6 @@ func display_action_label(text : String) -> void:
 	action_label.text = text
 	action_label.visible = true
 
-
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("print_rules"):
+		print(GlobalSettings.game_rules)

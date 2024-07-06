@@ -12,6 +12,7 @@ extends PanelContainer
 @onready var ender_option = get_node("VBoxContainer/ScrollContainer/VBoxContainer/8EnderContainer/8EnderOption")
 @onready var roundstart_option = get_node("VBoxContainer/ScrollContainer/VBoxContainer/RoundStartContainer/RoundStartOption")
 @onready var forbidden_option = $VBoxContainer/ScrollContainer/VBoxContainer/ForbiddenContainer/ForbiddenOption.get_popup()
+@onready var miyako_option = get_node("VBoxContainer/ScrollContainer/VBoxContainer/MiyakoContainer/MiyakoOption")
 
 func _ready() -> void:
 	# Connecting the MenuButton for forbidden last card and connecting it to _handle_menu_options
@@ -73,7 +74,10 @@ func apply_settings_from_save() -> void:
 	# Game Speed
 
 	#spades_option.button_pressed = GlobalSettings.game_rules['3_spades']
-	#skip_option.button_pressed = GlobalSettings.game_rules['5_skip']
+	skip_option.button_pressed = GlobalSettings.game_rules['5_skip']
 	ender_option.button_pressed = GlobalSettings.game_rules['8_ender']
 	# Round Start
 	# Forbidden Last
+	# Sequence
+	miyako_option.button_pressed = GlobalSettings.game_rules['miyako_ochi']
+	# Revolution

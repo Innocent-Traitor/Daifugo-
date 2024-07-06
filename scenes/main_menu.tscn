@@ -406,6 +406,7 @@ popup/item_1/text = "English"
 popup/item_1/id = 1
 
 [node name="AutoPassContainer" type="HBoxContainer" parent="SettingsContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="AutoPassLabel" type="Label" parent="SettingsContainer/VBoxContainer/ScrollContainer/VBoxContainer/AutoPassContainer"]
@@ -418,6 +419,7 @@ custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 
 [node name="SpeedContainer" type="HBoxContainer" parent="SettingsContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="SpeedLabel" type="Label" parent="SettingsContainer/VBoxContainer/ScrollContainer/VBoxContainer/SpeedContainer"]
@@ -448,6 +450,7 @@ text = "    Game Rules
 "
 
 [node name="3SpadesContainer" type="HBoxContainer" parent="SettingsContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="3SpadesLabel" type="Label" parent="SettingsContainer/VBoxContainer/ScrollContainer/VBoxContainer/3SpadesContainer"]
@@ -484,6 +487,7 @@ custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 
 [node name="RoundStartContainer" type="HBoxContainer" parent="SettingsContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="RoundStartLabel" type="Label" parent="SettingsContainer/VBoxContainer/ScrollContainer/VBoxContainer/RoundStartContainer"]
@@ -509,6 +513,7 @@ popup/item_5/text = "Daifugo"
 popup/item_5/id = 5
 
 [node name="ForbiddenContainer" type="HBoxContainer" parent="SettingsContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="ForbiddenLabel" type="Label" parent="SettingsContainer/VBoxContainer/ScrollContainer/VBoxContainer/ForbiddenContainer"]
@@ -531,6 +536,7 @@ popup/item_2/checkable = 1
 popup/item_2/id = 2
 
 [node name="SequenceContainer" type="HBoxContainer" parent="SettingsContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="SequenceLabel" type="Label" parent="SettingsContainer/VBoxContainer/ScrollContainer/VBoxContainer/SequenceContainer"]
@@ -555,6 +561,7 @@ custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 
 [node name="RevolutionContainer" type="HBoxContainer" parent="SettingsContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="RevolutionLabel" type="Label" parent="SettingsContainer/VBoxContainer/ScrollContainer/VBoxContainer/RevolutionContainer"]
